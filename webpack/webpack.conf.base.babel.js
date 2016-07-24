@@ -38,18 +38,21 @@ export default {
         loader: 'url',
         query: {
           limit: 10000,
-          name: path.posix.join('static', 'img/[name].[hash:7].[ext]')
+          name: path.posix.join('static', 'img/[name].[ext]')
         }
       }, {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url',
         query: {
           limit: 10000,
-          name: path.posix.join('static', 'fonts/[name].[hash:7].[ext]')
+          name: path.posix.join('static', 'fonts/[name].[ext]')
         }
       }, {
         test: /\.ico$/,
-        loader: 'file-loader?name=[name].[ext]'
+        loader: 'file-loader',
+        query: {
+          name: '[name].ico'
+        }
       }
     ]
   },
