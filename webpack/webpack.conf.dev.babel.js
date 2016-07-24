@@ -11,13 +11,14 @@ export default webpackMerge(baseWebpackConfig, {
   devtool: '#eval-source-map',
   entry: {
     app: [
-      'eventsource-polyfill', // IE hmr fix
-      `webpack-hot-middleware/client?reload=true&path=${PUBLIC_PATH}__webpack_hmr`, // hmr, external devices hmr works
+      'eventsource-polyfill', // IE HMR fix
+      `webpack-hot-middleware/client?reload=true&path=${PUBLIC_PATH}__webpack_hmr`, // HMR works calling js from external server
+      './webpack/client.js',
       './client/app/main.js'
     ]
   },
   output: {
-    publicPath: PUBLIC_PATH, // external devices hmr works
+    publicPath: PUBLIC_PATH, // chunks works calling js from external server
     filename: '[name].js',
     chunkFilename: 'chunk.[id].js'
   },
@@ -36,7 +37,7 @@ export default webpackMerge(baseWebpackConfig, {
       }
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(), // enable hmr
+    new webpack.HotModuleReplacementPlugin(), // enable HMR
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       template: './client/index.html',

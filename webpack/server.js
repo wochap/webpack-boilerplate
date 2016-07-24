@@ -21,8 +21,13 @@ const middleware = webpackMiddleware(compiler, {
   }
 })
 const hotMiddleware = webpackHotMiddleware(compiler)
-
-// TODO: force page reload when html-webpack-plugin template changes
+// force page reload when html-webpack-plugin template changes
+compiler.plugin('compilation', function (compilation) {
+  compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
+    hotMiddleware.publish({ action: 'reload' })
+    cb()
+  })
+})
 
 app.use(middleware)
 app.use(hotMiddleware) // disply errors on browser
