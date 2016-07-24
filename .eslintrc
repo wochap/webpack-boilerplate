@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "standard"
+  ],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": 'build/webpack.conf.dev.babel.js'
+      }
+    }
+  },
+  "parserOptions": {
+    "sourceType": "module",
+  },
+  rules: {
+    "no-console": 0,
+    'no-debugger': 0
+  }
+}

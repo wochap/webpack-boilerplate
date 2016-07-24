@@ -1,0 +1,64 @@
+{
+  "name": "base-webpack",
+  "version": "1.0.0",
+  "description": "Base webpack boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/main.js",
+    "dev": "babel-node webpack/server.js",
+    "build": "run-s start-build start ",
+    "start-build": "babel-node webpack/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wochap/base-webpack.git"
+  },
+  "keywords": [
+    "webpack",
+    "es6",
+    "sass",
+    "postcss",
+    "hmr",
+    "linter"
+  ],
+  "author": "Gean Marroquin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wochap/base-webpack/issues"
+  },
+  "homepage": "https://github.com/wochap/base-webpack#readme",
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-runtime": "^6.9.2",
+    "css-loader": "^0.23.1",
+    "eslint": "^3.1.1",
+    "eslint-config-standard": "^5.3.5",
+    "eslint-import-resolver-webpack": "^0.4.0",
+    "eslint-loader": "^1.4.1",
+    "eslint-plugin-import": "^1.11.1",
+    "eslint-plugin-promise": "^2.0.0",
+    "eslint-plugin-standard": "^2.0.0",
+    "eventsource-polyfill": "^0.9.6",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.22.0",
+    "node-sass": "^3.8.0",
+    "npm-run-all": "^2.3.0",
+    "ora": "^0.2.3",
+    "postcss-loader": "^0.9.1",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.12.1",
+    "webpack-merge": "^0.14.0"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
