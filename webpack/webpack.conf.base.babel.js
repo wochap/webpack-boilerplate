@@ -1,4 +1,5 @@
 import path from 'path'
+import autoprefixer from 'autoprefixer'
 
 const projectRootPath = path.resolve(__dirname, '../')
 
@@ -58,5 +59,8 @@ export default {
   },
   eslint: {
     configFile: path.resolve(__dirname, '../.eslintrc')
-  }
+  },
+  postcss: [
+    autoprefixer({browsers: ['last 2 versions']})
+  ]
 }
