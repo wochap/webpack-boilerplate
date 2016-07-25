@@ -51,6 +51,7 @@
     "ora": "^0.2.3",
     "postcss-loader": "^0.9.1",
     "sass-loader": "^4.0.0",
+    "shelljs": "^0.7.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
