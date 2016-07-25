@@ -1,6 +1,6 @@
 import path from 'path'
 
-const projectRoot = path.resolve(__dirname, '../')
+const projectRootPath = path.resolve(__dirname, '../')
 
 export default {
   debug: true,
@@ -23,7 +23,7 @@ export default {
       {
         test: /\.js$/,
         loader: 'eslint-loader',
-        include: projectRoot,
+        include: projectRootPath,
         exclude: /node_modules/
       }
     ],
@@ -31,7 +31,7 @@ export default {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: projectRoot,
+        include: projectRootPath,
         exclude: /node_modules/
       }, {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
