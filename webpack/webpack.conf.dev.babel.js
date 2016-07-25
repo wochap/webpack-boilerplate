@@ -27,6 +27,9 @@ export default webpackMerge(baseWebpackConfig, {
   module: {
     loaders: [
       {
+        test: /\.css/,
+        loaders: ['style', 'css?sourceMap!postcss-loader']
+      }, {
         test: /\.scss/,
         loaders: ['style', 'css?sourceMap!postcss-loader', 'sass?sourceMap']
       }

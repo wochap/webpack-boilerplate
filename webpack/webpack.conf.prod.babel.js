@@ -19,6 +19,9 @@ export default webpackMerge(baseWebpackConfig, {
   module: {
     loaders: [
       {
+        test: /\.css/,
+        loader: ExtractTextPlugin.extract('css?sourceMap!postcss-loader')
+      }, {
         test: /\.scss/,
         loader: ExtractTextPlugin.extract('css?sourceMap!postcss-loader!sass?sourceMap')
       }
