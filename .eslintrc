@@ -8,7 +8,7 @@
   "settings": {
     "import/resolver": {
       "webpack": {
-        "config": 'build/webpack.conf.dev.babel.js'
+        "config": 'webpack/webpack.conf.dev.babel.js'
       }
     }
   },
