@@ -63,6 +63,7 @@
     "webpack-merge": "^0.14.0"
   },
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "my-ip": "^1.1.1"
   }
 }

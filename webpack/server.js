@@ -8,7 +8,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 import express from 'express'
 
 import devWebpackConfig from './webpack.conf.dev.babel'
-import {HOST, PORT} from './config'
+import {CURRENT_IP, WEBPACK_SERVER_PORT} from './config'
 
 const app = express()
 
@@ -32,6 +32,8 @@ compiler.plugin('compilation', function (compilation) {
 app.use(middleware)
 app.use(hotMiddleware) // disply errors on browser
 
-app.listen(PORT, HOST, function () {
-  console.log(`Webpack server listening at http://${HOST}:${PORT}\n`)
+app.listen(WEBPACK_SERVER_PORT, '0.0.0.0', function () {
+  console.log('Webpack server listening at:')
+  console.log(`http://localhost:${WEBPACK_SERVER_PORT}`)
+  console.log(`http://${CURRENT_IP}:${WEBPACK_SERVER_PORT} \n`)
 })

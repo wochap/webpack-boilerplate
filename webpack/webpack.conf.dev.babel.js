@@ -4,23 +4,22 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 
 import baseWebpackConfig from './webpack.conf.base.babel'
-import {HOST, PORT, BROWSER_SYNC_PORT} from './config'
+import {CURRENT_IP, WEBPACK_SERVER_PORT, BROWSER_SYNC_PORT} from './config'
 
-const externalPath = `http://${HOST}:${PORT}/`
-const publicPath = (HOST === '0.0.0.0') ? '/' : externalPath
+const externalPath = `http://${CURRENT_IP}:${WEBPACK_SERVER_PORT}/`
 
 export default webpackMerge(baseWebpackConfig, {
   devtool: '#eval-source-map',
   entry: {
     app: [
       'eventsource-polyfill', // IE HMR fix
-      `webpack-hot-middleware/client?reload=true&path=${publicPath}__webpack_hmr`, // HMR works calling js from external server
+      `webpack-hot-middleware/client?reload=true&path=${externalPath}__webpack_hmr`, // HMR works calling js from external server
       './webpack/client.js',
       './client/app/main.js'
     ]
   },
   output: {
-    publicPath: publicPath, // chunks works calling js from external server
+    publicPath: externalPath, // chunks works calling js from external server
     filename: '[name].js',
     chunkFilename: 'chunk.[id].js'
   },
@@ -49,7 +48,6 @@ export default webpackMerge(baseWebpackConfig, {
       inject: true
     }),
     new BrowserSyncPlugin({
-      host: HOST,
       port: BROWSER_SYNC_PORT,
       // proxy the Webpack Dev Server endpoint
       proxy: externalPath
