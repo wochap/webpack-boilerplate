@@ -37,7 +37,11 @@ export default webpackMerge(baseWebpackConfig, {
     new webpack.optimize.OccurenceOrderPlugin(),
     new ExtractTextPlugin(path.posix.join('static', 'css/[name].css')),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
     new HtmlWebpackPlugin({
       template: './client/index.html',
       inject: true,
