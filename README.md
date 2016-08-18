@@ -15,12 +15,19 @@ $ npm run build
 
 ## Laravel setup
 
-You can proxy webpack server, or calling js from webpack server, example:
+You can proxy webpack server, or calling `app.js` from webpack server, example:
 
 ```sh
 # running
-$ env HOST=192.168.1.35 npm run dev
+$ npm run dev
+
+# will log something like
+Webpack server listening at:
+http://localhost:8080
+http://192.168.0.4:8080
 ```
+
+Then you will need add the script with the correct src
 
 ```html
 <!DOCTYPE html>
@@ -30,9 +37,9 @@ $ env HOST=192.168.1.35 npm run dev
     <title></title>
   </head>
   <body>
-    <script src="192.168.1.35:8000/app.js"></script>
+    <script src="http://192.168.0.4:8080/app.js"></script>
   </body>
 </html>
 ```
 
-**Important**, you will need pass `HOST` env variable to `npm run dev`, if not, `HMR` will not works.
+I used `IP` for see the web page from external devices.
