@@ -1,6 +1,6 @@
 # Base webpack
 
-## Build setup
+## Usage
 
 ``` bash
 # install dependencies
