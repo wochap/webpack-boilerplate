@@ -1,4 +1,4 @@
-// express server, servers dist folder
+// express server, serves dist folder
 
 const express = require('express')
 const path = require('path')
