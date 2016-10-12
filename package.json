@@ -1,32 +1,15 @@
 {
-  "name": "base-webpack",
-  "version": "1.0.0",
-  "description": "Base webpack boilerplate",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "start": "node server/main.js",
+    "start": "http-server dist",
     "dev": "babel-node webpack/server.js",
     "build": "run-s start-build start ",
     "start-build": "babel-node webpack/build.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wochap/base-webpack.git"
+  "dependencies": {
+    "express": "^4.14.0",
+    "my-ip": "^1.1.1"
   },
-  "keywords": [
-    "webpack",
-    "es6",
-    "sass",
-    "postcss",
-    "hmr",
-    "linter"
-  ],
-  "author": "Gean Marroquin",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/wochap/base-webpack/issues"
-  },
-  "homepage": "https://github.com/wochap/base-webpack#readme",
   "devDependencies": {
     "autoprefixer": "^6.3.7",
     "babel-cli": "^6.11.4",
@@ -61,9 +44,5 @@
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.12.1",
     "webpack-merge": "^0.14.0"
-  },
-  "dependencies": {
-    "express": "^4.14.0",
-    "my-ip": "^1.1.1"
   }
 }
