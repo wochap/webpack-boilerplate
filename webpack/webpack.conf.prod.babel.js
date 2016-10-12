@@ -9,12 +9,12 @@ import baseWebpackConfig from './webpack.conf.base.babel'
 export default webpackMerge(baseWebpackConfig, {
   devtool: 'source-map',
   entry: {
-    app: './client/app/main.js'
+    app: path.resolve(__dirname, '../src/app/main.js')
   },
   output: {
     publicPath: '/',
-    filename: path.posix.join('static', 'js/[name].js'),
-    chunkFilename: path.posix.join('static', 'js/chunk.[id].js')
+    filename: 'static/js/[name].js',
+    chunkFilename: 'static/js/chunk.[id].js'
   },
   module: {
     loaders: [
@@ -31,11 +31,10 @@ export default webpackMerge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
-      },
-      __DEV__: false
+      }
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new ExtractTextPlugin(path.posix.join('static', 'css/[name].css')),
+    new ExtractTextPlugin('static/css/[name].css'),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -43,7 +42,7 @@ export default webpackMerge(baseWebpackConfig, {
       }
     }),
     new HtmlWebpackPlugin({
-      template: './client/index.html',
+      template: path.resolve(__dirname, '../src/index.html'),
       inject: true,
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'

@@ -12,10 +12,9 @@ export default {
   resolve: {
     extensions: ['', '.js'],
     alias: {
-      'client': path.resolve(__dirname, '../client'),
-      'app': path.resolve(__dirname, '../client/app'),
-      'server': path.resolve(__dirname, '../server'),
-      'styles': path.resolve(__dirname, '../client/styles')
+      'src': path.resolve(__dirname, '../src'),
+      'app': path.resolve(__dirname, '../src/app'),
+      'styles': path.resolve(__dirname, '../src/styles')
     },
     modulesDirectories: ['node_modules', 'shared']
   },
@@ -36,17 +35,17 @@ export default {
         exclude: /node_modules/
       }, {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url',
+        loader: 'url-loader',
         query: {
           limit: 10000,
-          name: path.posix.join('static', 'img/[name].[ext]')
+          name: 'static/img/[name].[ext]'
         }
       }, {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url',
+        loader: 'url-loader',
         query: {
           limit: 10000,
-          name: path.posix.join('static', 'fonts/[name].[ext]')
+          name: 'static/fonts/[name].[ext]'
         }
       }, {
         test: /\.ico$/,
@@ -58,7 +57,7 @@ export default {
     ]
   },
   eslint: {
-    configFile: path.resolve(__dirname, '../.eslintrc')
+    configFile: path.resolve(__dirname, '../.eslintrc.js')
   },
   postcss: [
     autoprefixer({browsers: ['last 2 versions']})
