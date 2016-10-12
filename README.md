@@ -1,6 +1,17 @@
 # Base webpack
 
-## Usage
+> Start your next project using technologies that you love
+
+## Features
+
+* [HMR](https://webpack.github.io/docs/hot-module-replacement.html)
+* [ESLint](http://eslint.org/)
+* [ES2015](https://babeljs.io/docs/plugins/preset-es2015/)
+* [SASS](http://sass-lang.com/)
+* [PostCSS](https://github.com/postcss/postcss)
+* [BrowserSync](https://www.browsersync.io/)
+
+## Development
 
 ``` bash
 # install dependencies
@@ -13,33 +24,12 @@ $ npm run dev
 $ npm run build
 ```
 
-## Laravel setup
-
-You can proxy webpack server, or calling `app.js` from webpack server, example:
-
-```sh
-# running
-$ npm run dev
-
-# will log something like
-Webpack server listening at:
-http://localhost:8080
-http://192.168.0.4:8080
-```
-
-Then you will need add the script with the correct src
+In development if you are working with a backend, like [Laravel](https://laravel.com/), you will need add a script to your template:
 
 ```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <script src="http://192.168.0.4:8080/app.js"></script>
-  </body>
-</html>
+...
+<script src="http:/[your IP]:8080/app.js"></script>
+...
 ```
 
 I used `IP` for see the web page from external devices.
