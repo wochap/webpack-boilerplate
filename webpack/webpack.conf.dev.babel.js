@@ -41,7 +41,7 @@ export default webpackMerge(baseWebpackConfig, {
         'NODE_ENV': JSON.stringify('development')
       }
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(), // enable HMR
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
