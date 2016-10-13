@@ -40,4 +40,3 @@ app.listen(WEBPACK_SERVER_PORT, '0.0.0.0', function () {
   console.log(`http://localhost:${WEBPACK_SERVER_PORT}`)
   console.log(`http://${CURRENT_IP}:${WEBPACK_SERVER_PORT} \n`)
 })
-g
