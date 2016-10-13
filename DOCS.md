@@ -22,6 +22,6 @@ This boilerplate assumes you are somewhat familiar with Webpack.
 │   │   └── main.scss         # main sass file
 │   ├── favicon.ico           # favicon to keep your browser from throwing a 404 during dev
 │   └── index.html            # index.html template
-└── webpack/                  # webpack config files
+└── build/                    # build scripts files (webpack)
     └── ...
 ```
