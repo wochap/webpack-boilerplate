@@ -33,7 +33,7 @@ export default webpackMerge(baseWebpackConfig, {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new ExtractTextPlugin('static/css/[name].css'),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
