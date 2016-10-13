@@ -10,7 +10,7 @@ import {CURRENT_IP, WEBPACK_SERVER_PORT, BROWSER_SYNC_PORT} from './config'
 const externalPath = `http://${CURRENT_IP}:${WEBPACK_SERVER_PORT}/`
 
 export default webpackMerge(baseWebpackConfig, {
-  devtool: '#eval-source-map',
+  devtool: 'eval-source-map',
   entry: {
     app: [
       'eventsource-polyfill', // IE HMR fix
