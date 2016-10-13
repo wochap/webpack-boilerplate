@@ -4,12 +4,13 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import path from 'path'
 
-import baseWebpackConfig from './webpack.conf.base.babel'
+import {projectRootPath} from '../config'
+import baseWebpackConfig from './config.base.babel'
 
 export default webpackMerge(baseWebpackConfig, {
   devtool: 'source-map',
   entry: {
-    app: path.resolve(__dirname, '../src/app/main.js')
+    app: path.join(projectRootPath, 'src/app/main.js')
   },
   output: {
     publicPath: '/',
@@ -34,15 +35,15 @@ export default webpackMerge(baseWebpackConfig, {
       }
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new ExtractTextPlugin('static/css/[name].css'),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       }
     }),
+    new ExtractTextPlugin('static/css/[name].css'),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../src/index.html'),
+      template: path.join(projectRootPath, 'src/index.html'),
       inject: true,
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
@@ -55,7 +56,7 @@ export default webpackMerge(baseWebpackConfig, {
         return (
           module.resource &&
           /\.js$/.test(module.resource) &&
-          module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
+          module.resource.indexOf(path.join(projectRootPath, 'node_modules')) === 0
         )
       }
     }),

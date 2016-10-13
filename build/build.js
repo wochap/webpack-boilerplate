@@ -7,13 +7,14 @@ import ora from 'ora'
 import path from 'path'
 import {rm, mkdir} from 'shelljs'
 
-import prodWebpackConfig from './webpack.conf.prod.babel'
+import {projectRootPath} from './config'
+import prodWebpackConfig from './webpack/config.prod.babel'
 
 let spinner = ora('Building for production...')
 
 spinner.start()
 
-const distFolderPath = path.resolve(__dirname, '../dist')
+const distFolderPath = path.join(projectRootPath, 'dist')
 rm('-rf', distFolderPath)
 mkdir('-p', distFolderPath)
 

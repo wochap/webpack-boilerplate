@@ -1,20 +1,20 @@
 import path from 'path'
 import autoprefixer from 'autoprefixer'
 
-const projectRootPath = path.resolve(__dirname, '../')
+import {projectRootPath} from '../config'
 
 export default {
   debug: true,
   noInfo: true,
   output: {
-    path: path.resolve(__dirname, '../dist')
+    path: path.join(projectRootPath, 'dist')
   },
   resolve: {
     extensions: ['', '.js'],
     alias: {
-      'src': path.resolve(__dirname, '../src'),
-      'app': path.resolve(__dirname, '../src/app'),
-      'styles': path.resolve(__dirname, '../src/styles')
+      'src': path.join(projectRootPath, 'src'),
+      'app': path.join(projectRootPath, 'src/app'),
+      'styles': path.join(projectRootPath, 'src/styles')
     },
     modulesDirectories: ['node_modules', 'shared']
   },
@@ -57,7 +57,7 @@ export default {
     ]
   },
   eslint: {
-    configFile: path.resolve(__dirname, '../.eslintrc.js')
+    configFile: path.join(projectRootPath, '.eslintrc.js')
   },
   postcss: [
     autoprefixer({browsers: ['last 2 versions']})

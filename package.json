@@ -2,9 +2,9 @@
   "private": true,
   "scripts": {
     "start": "http-server dist",
-    "dev": "babel-node webpack/server.js",
+    "dev": "babel-node build/dev-server.js",
     "build": "run-s start-build start ",
-    "start-build": "babel-node webpack/build.js"
+    "start-build": "babel-node build/build.js"
   },
   "dependencies": {
     "express": "^4.14.0",

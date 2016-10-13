@@ -11,7 +11,7 @@ module.exports = {
   'settings': {
     'import/resolver': {
       'webpack': {
-        'config': 'webpack/webpack.conf.dev.babel.js'
+        'config': 'build/webpack/config.base.babel.js'
       }
     }
   },

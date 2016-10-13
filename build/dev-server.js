@@ -8,8 +8,8 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 import history from 'connect-history-api-fallback'
 import express from 'express'
 
-import devWebpackConfig from './webpack.conf.dev.babel'
-import {CURRENT_IP, WEBPACK_SERVER_PORT} from './config'
+import {CURRENT_IP, WEBPACK_SERVER_PORT, projectRootPath} from './config'
+import devWebpackConfig from './webpack/config.dev.babel'
 
 const app = express()
 
