@@ -5,6 +5,7 @@ process.env.NODE_ENV = 'development'
 import webpack from 'webpack'
 import webpackMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
+import history from 'connect-history-api-fallback'
 import express from 'express'
 
 import devWebpackConfig from './webpack.conf.dev.babel'
@@ -29,6 +30,7 @@ compiler.plugin('compilation', function (compilation) {
   })
 })
 
+app.use(history())
 app.use(middleware)
 app.use(hotMiddleware) // disply errors on browser
 
