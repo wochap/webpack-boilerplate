@@ -5,20 +5,20 @@ process.env.NODE_ENV = 'production'
 import webpack from 'webpack'
 import ora from 'ora'
 import path from 'path'
-import {rm, mkdir} from 'shelljs'
+import shelljs from 'shelljs'
 
+import webpackConfigProd from './webpack/config.prod.babel'
 import {projectRootPath} from './config'
-import prodWebpackConfig from './webpack/config.prod.babel'
 
 let spinner = ora('Building for production...')
 
 spinner.start()
 
 const distFolderPath = path.join(projectRootPath, 'dist')
-rm('-rf', distFolderPath)
-mkdir('-p', distFolderPath)
+shelljs.rm('-rf', distFolderPath)
+shelljs.mkdir('-p', distFolderPath)
 
-webpack(prodWebpackConfig).run((err, stats) => {
+webpack(webpackConfigProd).run((err, stats) => {
   spinner.stop()
 
   if (err) throw err

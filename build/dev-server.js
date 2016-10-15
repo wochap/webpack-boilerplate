@@ -9,14 +9,14 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 import history from 'connect-history-api-fallback'
 import express from 'express'
 
+import webpackConfigDev from './webpack/config.dev.babel'
 import {CURRENT_IP, WEBPACK_SERVER_PORT, projectRootPath} from './config'
-import devWebpackConfig from './webpack/config.dev.babel'
 
 const app = express()
 
-const compiler = webpack(devWebpackConfig)
+const compiler = webpack(webpackConfigDev)
 const webpackMiddleware = webpackDevMiddleware(compiler, {
-  publicPath: devWebpackConfig.output.publicPath,
+  publicPath: webpackConfigDev.output.publicPath,
   stats: {
     colors: true,
     chunks: false
@@ -34,7 +34,8 @@ compiler.plugin('compilation', function (compilation) {
 // handle fallback for HTML5 history API
 app.use(history())
 app.use(webpackMiddleware)
-app.use(hotMiddleware) // disply errors on browser
+// disply errors on browser
+app.use(hotMiddleware)
 
 app.listen(WEBPACK_SERVER_PORT, '0.0.0.0', function () {
   console.log(chalk.yellow('Webpack dev-server listening at:'))

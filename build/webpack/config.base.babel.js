@@ -1,5 +1,4 @@
 import path from 'path'
-import autoprefixer from 'autoprefixer'
 
 import {projectRootPath} from '../config'
 
@@ -60,6 +59,6 @@ export default {
     configFile: path.join(projectRootPath, '.eslintrc.js')
   },
   postcss: [
-    autoprefixer({browsers: ['last 2 versions']})
+    require('autoprefixer')({browsers: ['last 2 versions']})
   ]
 }

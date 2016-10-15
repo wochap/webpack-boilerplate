@@ -1,15 +1,15 @@
+import path from 'path'
 import webpack from 'webpack'
 import webpackMerge from 'webpack-merge'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
-import path from 'path'
 
+import webpackConfigBase from './config.base.babel'
 import {CURRENT_IP, WEBPACK_SERVER_PORT, BROWSER_SYNC_PORT, projectRootPath} from '../config'
-import baseWebpackConfig from './config.base.babel'
 
 const externalPath = `http://${CURRENT_IP}:${WEBPACK_SERVER_PORT}/`
 
-export default webpackMerge(baseWebpackConfig, {
+export default webpackMerge(webpackConfigBase, {
   devtool: 'eval-source-map',
   entry: {
     app: [
