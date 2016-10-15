@@ -2,6 +2,7 @@
 
 process.env.NODE_ENV = 'development'
 
+import chalk from 'chalk'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
@@ -36,7 +37,7 @@ app.use(webpackMiddleware)
 app.use(hotMiddleware) // disply errors on browser
 
 app.listen(WEBPACK_SERVER_PORT, '0.0.0.0', function () {
-  console.log('Webpack server listening at:')
-  console.log(`http://localhost:${WEBPACK_SERVER_PORT}`)
-  console.log(`http://${CURRENT_IP}:${WEBPACK_SERVER_PORT} \n`)
+  console.log(chalk.yellow('Webpack dev-server listening at:'))
+  console.log(chalk.green(`  http://localhost:${WEBPACK_SERVER_PORT}`))
+  console.log(chalk.green(`  http://${CURRENT_IP}:${WEBPACK_SERVER_PORT} \n`))
 })
