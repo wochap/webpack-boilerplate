@@ -14,14 +14,14 @@ This boilerplate assumes you are somewhat familiar with Webpack.
 ├── .eslintrc                 # eslint config
 ├── .eslintignore             # eslint ignore config
 ├── .nvmrc                    # nvm config
-├── package.json              # build scripts and dependencies
+├── package.json              # https://docs.npmjs.com/files/package.json
 ├── src/                      # source code
 │   ├── app/
 │   │   └── main.js           # app entry file
 │   ├── styles
 │   │   └── main.scss         # main sass file
 │   ├── favicon.ico           # favicon to keep your browser from throwing a 404 during dev
-│   └── index.html            # index.html template
+│   └── index.html            # index.html template (used by html-webpack-plugin)
 └── build/                    # build scripts files (webpack)
     └── ...
 ```
