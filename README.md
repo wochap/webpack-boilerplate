@@ -26,12 +26,12 @@ $ npm run dev
 $ npm run build
 ```
 
-In development if you are working with a backend, like [Laravel](https://laravel.com/), you will need add a script to your template:
+In development, if you are working with a backend like [Laravel](https://laravel.com/), you will need to add a script to your template file:
 
 ```html
 ...
-<script src="http:/[your IP]:8080/app.js"></script>
+<script src="http:/[localhost|ip]:[port]/app.js"></script>
 ...
 ```
 
-I used `IP` for see the web page from external devices.
+Use `IP` if you run your app from external devices.
