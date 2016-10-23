@@ -45,6 +45,10 @@ export default webpackMerge(webpackConfigBase, {
     new HtmlWebpackPlugin({
       template: templatePath,
       inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
