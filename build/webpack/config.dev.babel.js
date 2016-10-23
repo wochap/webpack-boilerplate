@@ -15,7 +15,7 @@ export default webpackMerge(webpackConfigBase, {
     app: [
       'eventsource-polyfill', // IE HMR fix
       `webpack-hot-middleware/client?reload=true&path=${externalPath}__webpack_hmr`, // HMR works calling js from external server
-      path.resolve(__dirname, './client.js'),
+      path.resolve(__dirname, './client.js'), // force page reload when html-webpack-plugin template changes
       path.join(projectRootPath, 'src/app/main.js')
     ]
   },
