@@ -2,10 +2,13 @@
 
 > Start your next project using technologies that you love
 
+A starting point for your next app
+
 ![Demo](https://drive.google.com/uc?export=download&id=0BwM5_eez3JnoVlBCX1NmX1BhelU)
 
 ## Features
 
+* [Express](http://expressjs.com/)
 * [HMR](https://webpack.github.io/docs/hot-module-replacement.html)
 * [ESLint](http://eslint.org/)
 * [ES2015](https://babeljs.io/docs/plugins/preset-es2015/)
