@@ -5,7 +5,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import path from 'path'
 
 import webpackConfigBase from './config.base.babel'
-import {projectRootPath} from '../config'
+import {projectRootPath, templatePath} from '../config'
 
 export default webpackMerge(webpackConfigBase, {
   devtool: 'source-map',
@@ -43,7 +43,7 @@ export default webpackMerge(webpackConfigBase, {
     }),
     new ExtractTextPlugin('static/css/[name].[contenthash].css'),
     new HtmlWebpackPlugin({
-      template: path.join(projectRootPath, 'src/index.html'),
+      template: templatePath,
       inject: true,
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
