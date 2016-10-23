@@ -1,4 +1,4 @@
-# Base webpack
+# Basic webpack boilerplate
 
 > Start your next project using technologies that you love
 
