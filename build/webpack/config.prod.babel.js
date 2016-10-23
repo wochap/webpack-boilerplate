@@ -14,8 +14,8 @@ export default webpackMerge(webpackConfigBase, {
   },
   output: {
     publicPath: '/',
-    filename: 'static/js/[name].js',
-    chunkFilename: 'static/js/chunk.[id].js'
+    filename: 'static/js/[name].[chunkhash].js',
+    chunkFilename: 'static/js/chunk.[id].[chunkhash].js'
   },
   module: {
     loaders: [
@@ -41,7 +41,7 @@ export default webpackMerge(webpackConfigBase, {
         warnings: false
       }
     }),
-    new ExtractTextPlugin('static/css/[name].css'),
+    new ExtractTextPlugin('static/css/[name].[contenthash].css'),
     new HtmlWebpackPlugin({
       template: path.join(projectRootPath, 'src/index.html'),
       inject: true,
