@@ -22,7 +22,7 @@ export default webpackMerge(webpackConfigBase, {
   output: {
     publicPath: externalPath, // chunks works calling js from external server
     filename: '[name].js',
-    chunkFilename: 'chunk.[id].js'
+    chunkFilename: '[name].chunk.js'
   },
   module: {
     loaders: [
