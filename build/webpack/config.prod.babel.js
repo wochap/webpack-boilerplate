@@ -37,13 +37,14 @@ export default webpackMerge(webpackConfigBase, {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    // OccurrenceOrderPlugin is needed for long-term caching to work properly.
+    // OccurrenceOrderPlugin is needed for long-term caching to work properly
     // see http://mxs.is/googmv
     new webpack.optimize.OccurrenceOrderPlugin(),
     // merge all duplicate modules
     new webpack.optimize.DedupePlugin(),
     // minify and optimize the javaScript
     new webpack.optimize.UglifyJsPlugin({
+      comments: false,
       compress: {
         warnings: false
       }
@@ -70,14 +71,14 @@ export default webpackMerge(webpackConfigBase, {
     new ExtractTextPlugin('static/css/[name].[contenthash].css'),
     // minify and optimize the index.html
     new HtmlWebpackPlugin({
-      template: templatePath,
+      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+      chunksSortMode: 'dependency',
       inject: true,
+      template: templatePath,
       minify: {
         removeComments: true,
         collapseWhitespace: true
-      },
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
+      }
     }),
     // this will generate a webpack-manifest.json file
     new ManifestPlugin({
