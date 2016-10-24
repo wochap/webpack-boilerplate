@@ -16,7 +16,7 @@ export default webpackMerge(webpackConfigBase, {
   output: {
     publicPath: '/',
     filename: 'static/js/[name].[chunkhash].js',
-    chunkFilename: 'static/js/chunk.[id].[chunkhash].js'
+    chunkFilename: 'static/js/[name].[chunkhash].chunk.js'
   },
   module: {
     loaders: [
@@ -30,6 +30,8 @@ export default webpackMerge(webpackConfigBase, {
     ]
   },
   plugins: [
+    // define free variables
+    // https://webpack.github.io/docs/list-of-plugins.html#defineplugin
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
@@ -64,7 +66,9 @@ export default webpackMerge(webpackConfigBase, {
       name: 'manifest',
       chunks: ['vendor']
     }),
+    // extract the CSS into a separate file
     new ExtractTextPlugin('static/css/[name].[contenthash].css'),
+    // minify and optimize the index.html
     new HtmlWebpackPlugin({
       template: templatePath,
       inject: true,
