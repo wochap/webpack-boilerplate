@@ -1,8 +1,9 @@
+import path from 'path'
 import webpack from 'webpack'
 import webpackMerge from 'webpack-merge'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import path from 'path'
+import ManifestPlugin from 'webpack-manifest-plugin'
 
 import webpackConfigBase from './config.base.babel'
 import {projectRootPath, templatePath} from '../config'
@@ -34,28 +35,21 @@ export default webpackMerge(webpackConfigBase, {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
+    // OccurrenceOrderPlugin is needed for long-term caching to work properly.
+    // see http://mxs.is/googmv
     new webpack.optimize.OccurrenceOrderPlugin(),
+    // merge all duplicate modules
     new webpack.optimize.DedupePlugin(),
+    // minify and optimize the javaScript
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       }
     }),
-    new ExtractTextPlugin('static/css/[name].[contenthash].css'),
-    new HtmlWebpackPlugin({
-      template: templatePath,
-      inject: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true
-      },
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
-    }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: function (module, count) {
+      minChunks (module, count) {
         // any required modules inside node_modules are extracted to vendor
         return (
           module.resource &&
@@ -69,6 +63,21 @@ export default webpackMerge(webpackConfigBase, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
+    }),
+    new ExtractTextPlugin('static/css/[name].[contenthash].css'),
+    new HtmlWebpackPlugin({
+      template: templatePath,
+      inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      },
+      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+      chunksSortMode: 'dependency'
+    }),
+    // this will generate a webpack-manifest.json file
+    new ManifestPlugin({
+      fileName: 'webpack-manifest.json'
     })
   ]
 })
