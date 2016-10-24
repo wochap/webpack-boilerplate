@@ -28,10 +28,10 @@ export default webpackMerge(webpackConfigBase, {
     loaders: [
       {
         test: /\.css/,
-        loaders: ['style', 'css?sourceMap!postcss-loader']
+        loaders: ['style', 'css-loader', 'postcss-loader']
       }, {
         test: /\.scss/,
-        loaders: ['style', 'css?sourceMap!postcss-loader', 'sass?sourceMap']
+        loaders: ['style', 'css-loader', 'postcss-loader', 'sass-loader']
       }
     ]
   },
