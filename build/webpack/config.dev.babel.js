@@ -49,6 +49,7 @@ export default webpackMerge(webpackConfigBase, {
       inject: true
     }),
     new BrowserSyncPlugin({
+      open: false,
       port: BROWSER_SYNC_PORT,
       // proxy the Webpack Dev Server endpoint
       proxy: externalPath
