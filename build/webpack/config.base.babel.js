@@ -1,6 +1,6 @@
 import path from 'path'
 
-import {projectRootPath} from '../config'
+import {projectRootPath, projectSourcePath} from '../config'
 
 export default {
   debug: true,
@@ -11,9 +11,9 @@ export default {
   resolve: {
     extensions: ['', '.js'],
     alias: {
-      'src': path.join(projectRootPath, 'src'),
-      'app': path.join(projectRootPath, 'src/app'),
-      'styles': path.join(projectRootPath, 'src/styles')
+      'src': projectSourcePath,
+      'app': path.join(projectSourcePath, 'app'),
+      'styles': path.join(projectSourcePath, 'styles')
     },
     modulesDirectories: ['node_modules', 'shared']
   },
@@ -22,7 +22,7 @@ export default {
       {
         test: /\.js$/,
         loader: 'eslint-loader',
-        include: projectRootPath,
+        include: projectSourcePath,
         exclude: /node_modules/
       }
     ],
@@ -30,11 +30,12 @@ export default {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: projectRootPath,
+        include: projectSourcePath,
         exclude: /node_modules/
       }, {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
+        include: projectSourcePath,
         query: {
           limit: 10000,
           name: 'static/img/[name].[ext]'
@@ -42,6 +43,7 @@ export default {
       }, {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
+        include: projectSourcePath,
         query: {
           limit: 10000,
           name: 'static/fonts/[name].[ext]'
@@ -49,6 +51,7 @@ export default {
       }, {
         test: /\.ico$/,
         loader: 'file-loader',
+        include: projectSourcePath,
         query: {
           name: '[name].ico'
         }
