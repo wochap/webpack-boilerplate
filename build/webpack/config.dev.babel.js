@@ -5,7 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 
 import webpackConfigBase from './config.base.babel'
-import {CURRENT_IP, WEBPACK_SERVER_PORT, BROWSER_SYNC_PORT, projectRootPath, templatePath} from '../config'
+import {CURRENT_IP, WEBPACK_SERVER_PORT, BROWSER_SYNC_PORT, projectRootPath, projectSourcePath, templatePath} from '../config'
 
 const externalPath = `http://${CURRENT_IP}:${WEBPACK_SERVER_PORT}/`
 
@@ -16,7 +16,7 @@ export default webpackMerge(webpackConfigBase, {
       'eventsource-polyfill', // IE HMR fix
       `webpack-hot-middleware/client?reload=true&path=${externalPath}__webpack_hmr`, // HMR works calling js from external server
       path.resolve(__dirname, './client.js'), // force page reload when html-webpack-plugin template changes
-      path.join(projectRootPath, 'src/app/main.js')
+      path.join(projectSourcePath, 'app/main.js')
     ]
   },
   output: {

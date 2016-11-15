@@ -6,12 +6,12 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import ManifestPlugin from 'webpack-manifest-plugin'
 
 import webpackConfigBase from './config.base.babel'
-import {projectRootPath, templatePath} from '../config'
+import {projectRootPath, projectSourcePath, templatePath} from '../config'
 
 export default webpackMerge(webpackConfigBase, {
   devtool: 'source-map',
   entry: {
-    app: path.join(projectRootPath, 'src/app/main.js')
+    app: path.join(projectSourcePath, 'app/main.js')
   },
   output: {
     publicPath: '/',
