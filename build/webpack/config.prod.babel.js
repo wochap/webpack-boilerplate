@@ -82,7 +82,8 @@ export default webpackMerge(webpackConfigBase, {
     }),
     // this will generate a webpack-manifest.json file
     new ManifestPlugin({
-      fileName: 'webpack-manifest.json'
+      fileName: 'webpack-manifest.json',
+      basePath: '/'
     })
   ]
 })
