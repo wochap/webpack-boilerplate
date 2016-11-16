@@ -16,7 +16,7 @@ module.exports = {
     }
   },
   'parserOptions': {
-    'sourceType': 'module',
+    'sourceType': 'module'
   },
   rules: {
     'no-console': DEBUG ? 0 : 2,
