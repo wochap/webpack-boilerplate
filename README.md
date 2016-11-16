@@ -19,7 +19,7 @@ A starting point for your next app
   - [babel-loader](https://github.com/babel/babel-loader)
   - [url-loader](https://github.com/webpack/url-loader)
   - [file-loader](https://github.com/webpack/file-loader)
-* [ESLint](http://eslint.org/) with [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) and [eslint-import-resolver-webpack](https://www.npmjs.com/package/eslint-import-resolver-webpack)
+* [ESLint](http://eslint.org/) with [eslint-config-standard](https://github.com/feross/eslint-config-standard), [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) and [eslint-import-resolver-webpack](https://www.npmjs.com/package/eslint-import-resolver-webpack)
 * [Babel](http://babeljs.io/) with [preset-es2015](https://babeljs.io/docs/plugins/preset-es2015/) and [plugin-transform-runtime](https://www.npmjs.com/package/babel-plugin-transform-runtime)
 
 ## Development
