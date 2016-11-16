@@ -81,6 +81,7 @@ export default webpackMerge(webpackConfigBase, {
       }
     }),
     // this will generate a webpack-manifest.json file
+    // in the output file you can see all assets' paths
     new ManifestPlugin({
       fileName: 'webpack-manifest.json',
       basePath: '/'
