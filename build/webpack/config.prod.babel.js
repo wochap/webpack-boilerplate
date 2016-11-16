@@ -22,10 +22,10 @@ export default webpackMerge(webpackConfigBase, {
     loaders: [
       {
         test: /\.css/,
-        loader: ExtractTextPlugin.extract('css?sourceMap!postcss-loader')
+        loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader')
       }, {
         test: /\.scss/,
-        loader: ExtractTextPlugin.extract('css?sourceMap!postcss-loader!sass?sourceMap')
+        loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
       }
     ]
   },
