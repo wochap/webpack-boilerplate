@@ -4,6 +4,10 @@ This boilerplate assumes you are somewhat familiar with Webpack.
 
 **It is recommended to use npm 3+ for a more efficient dependency tree.**
 
+## Tests
+
+Jest will run all tests files in `__tests__` folder, also we set up jest to works well with our webpack configuration.
+
 ## Project structure
 
 ```
@@ -24,7 +28,7 @@ This boilerplate assumes you are somewhat familiar with Webpack.
 │   ├── favicon.ico           # favicon to keep your browser from throwing a 404 during dev
 │   └── index.html            # template used by html-webpack-plugin
 └── build/                    # build tools (webpack)
-    ├── config                # config used by tasks and webpack
+    ├── config                # config used by tasks and webpack and jest config
     ├── tasks                 # like gulp tasks
     └── webpack               # webpack config files
 ```

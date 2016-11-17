@@ -16,5 +16,10 @@
   },
   "testPathIgnorePatterns": [
     "<rootDir>/(build|docs|node_modules)/"
+  ],
+  "collectCoverageFrom": [
+    "src/**/*.js",
+    "!**/node_modules/**",
+    "!**/vendor/**"
   ]
 }
