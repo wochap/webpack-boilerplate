@@ -3,10 +3,9 @@ const DEBUG = process.env.NODE_ENV !== 'production'
 module.exports = {
   'root': true,
   'extends': [
-    'eslint:recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
-    'standard'
+    'eslint-config-airbnb'
   ],
   'env': {
     'browser': true,
@@ -20,10 +19,9 @@ module.exports = {
       }
     }
   },
-  'parserOptions': {
-    'sourceType': 'module'
-  },
   rules: {
+    'semi': [2,'never'],
+    'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }],
     'no-console': DEBUG ? 0 : 2,
     'no-debugger': DEBUG ? 0 : 2
   }

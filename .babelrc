@@ -1,4 +1,18 @@
 {
-  "presets": ["es2015"],
-  "plugins": ["transform-runtime"]
+  "presets": [
+    "es2015",
+    "stage-1",
+    "react"
+  ],
+  "plugins": [
+    "transform-runtime"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "transform-runtime",
+        "react-hot-loader/babel"
+      ]
+    }
+  }
 }

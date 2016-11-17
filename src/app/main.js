@@ -1,11 +1,29 @@
 import 'src/favicon.ico'
 import 'src/styles/main.scss'
 
-// function to test
-export default (a, b) => (a + b)
+import React from 'react'
+import { render } from 'react-dom'
+import { AppContainer } from 'react-hot-loader' // eslint-disable-line
+import App from './App'
 
-// This tells Webpack that this file and all of its dependencies can be replaced.
-// http://andrewhfarmer.com/webpack-hmr-tutorial/#the-simple-way
+const rootEl = document.getElementById('root')
+
+render((
+  <AppContainer>
+    <App />
+  </AppContainer>),
+  rootEl,
+)
+
 if (module.hot) {
-  module.hot.accept()
+  module.hot.accept('./App', () => {
+    const NextApp = require('./App').default // eslint-disable-line
+
+    render((
+      <AppContainer>
+        <NextApp />
+      </AppContainer>),
+      rootEl,
+    )
+  })
 }
