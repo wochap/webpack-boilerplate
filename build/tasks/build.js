@@ -1,4 +1,4 @@
-// webpack prod build
+// run webpack with production config
 
 process.env.NODE_ENV = 'production'
 
@@ -7,8 +7,8 @@ import ora from 'ora'
 import path from 'path'
 import shelljs from 'shelljs'
 
-import webpackConfigProd from './webpack/config.prod.babel'
-import {projectRootPath} from './config'
+import webpackConfigProd from '../webpack/config.prod.babel'
+import {projectRootPath} from '../config'
 
 let spinner = ora('Building for production...')
 

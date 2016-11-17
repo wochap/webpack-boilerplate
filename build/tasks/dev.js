@@ -1,4 +1,4 @@
-// express dev-server with webpack middlewares
+// run express server with webpack middlewares and development config
 
 process.env.NODE_ENV = 'development'
 
@@ -9,8 +9,8 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 import history from 'connect-history-api-fallback'
 import express from 'express'
 
-import webpackConfigDev from './webpack/config.dev.babel'
-import {CURRENT_IP, WEBPACK_SERVER_PORT, projectRootPath} from './config'
+import webpackConfigDev from '../webpack/config.dev.babel'
+import {CURRENT_IP, WEBPACK_SERVER_PORT} from '../config'
 
 const app = express()
 
@@ -35,6 +35,7 @@ compiler.plugin('compilation', function (compilation) {
 
 // handle fallback for HTML5 history API
 app.use(history())
+
 app.use(webpackMiddleware)
 app.use(hotMiddleware)
 
