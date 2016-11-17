@@ -21,6 +21,7 @@ A starting point for your next app
   - [file-loader](https://github.com/webpack/file-loader)
 * [ESLint](http://eslint.org/) with [eslint-config-standard](https://github.com/feross/eslint-config-standard), [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) and [eslint-import-resolver-webpack](https://www.npmjs.com/package/eslint-import-resolver-webpack)
 * [Babel](http://babeljs.io/) with [preset-es2015](https://babeljs.io/docs/plugins/preset-es2015/) and [plugin-transform-runtime](https://www.npmjs.com/package/babel-plugin-transform-runtime)
+* [Jest](https://facebook.github.io/jest/)
 
 ## Development
 
@@ -30,6 +31,9 @@ $ npm install
 
 # serve with hot reload at localhost:8080
 $ npm run dev
+
+# run all tests
+$ npm run test
 
 # build for production with minification and serve dist files at localhost:8080
 $ npm run build

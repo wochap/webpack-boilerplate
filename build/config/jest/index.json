@@ -1,0 +1,20 @@
+{
+  "moduleFileExtensions": [
+    "js",
+    "json"
+  ],
+  "moduleDirectories": [
+    "node_modules",
+    "shared"
+  ],
+  "moduleNameMapper": {
+    "^.+\\.(png|jpe?g|gif|svg|ico|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/build/config/jest/FileStub.js",
+    "^.+\\.(css|scss)$": "<rootDir>/build/config/jest/CSSStub.js",
+    "^src(.*)$": "<rootDir>/src$1",
+    "^app(.*)$": "<rootDir>/src/app$1",
+    "^styles(.*)$": "<rootDir>/src/styles$1"
+  },
+  "testPathIgnorePatterns": [
+    "<rootDir>/(build|docs|node_modules)/"
+  ]
+}
