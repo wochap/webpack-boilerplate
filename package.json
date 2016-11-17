@@ -2,10 +2,10 @@
   "private": true,
   "scripts": {
     "start": "http-server dist",
-    "dev": "babel-node build/dev-server.js",
-    "build": "run-s start-build start ",
+    "dev": "babel-node build/tasks/dev.js",
     "test": "babel-node build/tasks/test.js --config=build/config/jest/index.json",
-    "start-build": "babel-node build/build.js"
+    "build": "run-s start-build start ",
+    "start-build": "babel-node build/tasks/build.js"
   },
   "dependencies": {
     "express": "^4.14.0",
