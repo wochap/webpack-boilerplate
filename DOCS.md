@@ -24,5 +24,7 @@ This boilerplate assumes you are somewhat familiar with Webpack.
 │   ├── favicon.ico           # favicon to keep your browser from throwing a 404 during dev
 │   └── index.html            # template used by html-webpack-plugin
 └── build/                    # build tools (webpack)
-    └── ...
+    ├── config                # config used by tasks and webpack
+    ├── tasks                 # like gulp tasks
+    └── webpack               # webpack config files
 ```
