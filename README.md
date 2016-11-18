@@ -4,7 +4,7 @@
 
 A starting point for your next app
 
-![Demo](https://drive.google.com/uc?export=download&id=0BwM5_eez3JnoVlBCX1NmX1BhelU)
+![Demo](https://drive.google.com/uc?export=download&id=0BwM5_eez3JnoVkZLVmNuZUg4bXM)
 
 ## What’s Inside?
 
@@ -21,7 +21,8 @@ A starting point for your next app
   - [file-loader](https://github.com/webpack/file-loader)
 * [ESLint](http://eslint.org/) with [eslint-config-standard](https://github.com/feross/eslint-config-standard), [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) and [eslint-import-resolver-webpack](https://www.npmjs.com/package/eslint-import-resolver-webpack)
 * [Babel](http://babeljs.io/) with [preset-es2015](https://babeljs.io/docs/plugins/preset-es2015/) and [plugin-transform-runtime](https://www.npmjs.com/package/babel-plugin-transform-runtime)
-* [Jest](https://facebook.github.io/jest/)
+* [Jest](https://facebook.github.io/jest/) with all stuff to test `react components`
+* [React](https://facebook.github.io/react/) with [react-hot-loader](https://github.com/gaearon/react-hot-loader/tree/next)
 
 ## Development
 
