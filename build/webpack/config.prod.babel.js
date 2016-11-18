@@ -3,8 +3,8 @@ import webpack from 'webpack'
 import webpackMerge from 'webpack-merge'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import ManifestPlugin from 'webpack-manifest-plugin'
 import InlineManifestWebpackPlugin from 'inline-manifest-webpack-plugin'
+import AssetsPlugin from 'assets-webpack-plugin'
 
 import webpackConfigBase from './config.base.babel'
 import {projectRootPath, projectSourcePath, templatePath} from '../config'
@@ -60,7 +60,7 @@ export default webpackMerge(webpackConfigBase, {
     // prevent vendor hash from being updated whenever app bundle is updated
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
-      chunks: ['vendor']
+      chunks: ['app', 'vendor']
     }),
     // extract the CSS into a separate file
     new ExtractTextPlugin('static/css/[name].[contenthash:8].css'),
@@ -75,15 +75,15 @@ export default webpackMerge(webpackConfigBase, {
         collapseWhitespace: true
       }
     }),
+    // inline webpack manifest
     // https://www.npmjs.com/package/inline-manifest-webpack-plugin
     new InlineManifestWebpackPlugin({
-        name: 'vendorManifest'
+      name: 'webpackManifest'
     }),
-    // this will generate a assets-manifest.json file
-    // in the output file you can see all assets' paths
-    new ManifestPlugin({
-      fileName: 'assets-manifest.json',
-      basePath: '/'
+    // generate a webpack-assets.json file that contains all assets' paths
+    // https://github.com/kossnocorp/assets-webpack-plugin
+    new AssetsPlugin({
+      path: path.join(projectRootPath, 'dist')
     })
   ]
 })

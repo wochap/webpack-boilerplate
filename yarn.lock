@@ -227,6 +227,16 @@ assert@^1.1.1:
   dependencies:
     util "0.10.3"
 
+assets-webpack-plugin:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/assets-webpack-plugin/-/assets-webpack-plugin-3.5.0.tgz#933b16bf679c7510dd3475e4df9ba495d9dc0368"
+  dependencies:
+    camelcase "^1.2.1"
+    escape-string-regexp "^1.0.3"
+    lodash.assign "^3.2.0"
+    lodash.merge "^3.3.2"
+    mkdirp "^0.5.1"
+
 async-each-series@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/async-each-series/-/async-each-series-0.1.1.tgz#7617c1917401fd8ca4a28aadce3dbae98afeb432"
@@ -2371,7 +2381,7 @@ escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
 
-escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
+escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.3, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
@@ -2848,7 +2858,7 @@ from@~0:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/from/-/from-0.1.3.tgz#ef63ac2062ac32acf7862e0d40b44b896f22f3bc"
 
-fs-extra@^0.30.0, fs-extra@0.30.0:
+fs-extra@0.30.0:
   version "0.30.0"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-0.30.0.tgz#f233ffcc08d4da7d432daa449776989db1df93f0"
   dependencies:
@@ -3307,6 +3317,12 @@ inherits@2.0.1:
 ini@~1.3.0:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.4.tgz#0537cb79daf59b59a1a517dff706c86ec039162e"
+
+inline-manifest-webpack-plugin:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/inline-manifest-webpack-plugin/-/inline-manifest-webpack-plugin-3.0.1.tgz#ca2151063115298e2fd94b669ab76c7dd63e44ad"
+  dependencies:
+    source-map-url "0.4.0"
 
 inquirer@^0.12.0:
   version "0.12.0"
@@ -4131,6 +4147,14 @@ lodash._topath@^3.0.0:
   dependencies:
     lodash.isarray "^3.0.0"
 
+lodash.assign@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/lodash.assign/-/lodash.assign-3.2.0.tgz#3ce9f0234b4b2223e296b8fa0ac1fee8ebca64fa"
+  dependencies:
+    lodash._baseassign "^3.0.0"
+    lodash._createassigner "^3.0.0"
+    lodash.keys "^3.0.0"
+
 lodash.assign@^4.0.3, lodash.assign@^4.0.6, lodash.assign@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/lodash.assign/-/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
@@ -4314,7 +4338,7 @@ lodash@^3.10.1:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.0.0, lodash@^4.14.0, lodash@^4.16.4, lodash@^4.2.0, "lodash@>=3.5 <5", lodash@4.x.x:
+lodash@^4.0.0, lodash@^4.14.0, lodash@^4.16.4, lodash@^4.2.0, lodash@4.x.x:
   version "4.16.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.16.4.tgz#01ce306b9bad1319f2a5528674f88297aeb70127"
 
@@ -6163,6 +6187,10 @@ source-map-support@^0.4.2:
   dependencies:
     source-map "^0.5.3"
 
+source-map-url@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/source-map-url/-/source-map-url-0.4.0.tgz#3e935d7ddd73631b97659956d55128e87b5084a3"
+
 source-map@^0.4.4, source-map@~0.4.1, source-map@0.4.x:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.4.4.tgz#eba4f5da9c0dc999de68032d8b4f76173652036b"
@@ -6726,13 +6754,6 @@ webpack-hot-middleware@^2.12.1:
     querystring "^0.2.0"
     strip-ansi "^3.0.0"
 
-webpack-manifest-plugin:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/webpack-manifest-plugin/-/webpack-manifest-plugin-1.1.0.tgz#6b6c718aade8a2537995784b46bd2e9836057caa"
-  dependencies:
-    fs-extra "^0.30.0"
-    lodash ">=3.5 <5"
-
 webpack-merge@^0.14.0:
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-0.14.1.tgz#d6bfe6d9360a024e1e7f8e6383ae735f1737cd23"
@@ -7000,3 +7021,4 @@ yargs@6.0.0:
 yeast@0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
+
