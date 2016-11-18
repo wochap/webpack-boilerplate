@@ -60,7 +60,7 @@ export default webpackMerge(webpackConfigBase, {
     // prevent vendor hash from being updated whenever app bundle is updated
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
-      chunks: ['app', 'vendor']
+      chunks: ['vendor']
     }),
     // extract the CSS into a separate file
     new ExtractTextPlugin('static/css/[name].[contenthash:8].css'),
