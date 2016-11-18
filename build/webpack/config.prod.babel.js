@@ -11,7 +11,8 @@ import {projectRootPath, projectSourcePath, templatePath} from '../config'
 export default webpackMerge(webpackConfigBase, {
   devtool: 'source-map',
   entry: {
-    app: path.join(projectSourcePath, 'app/main.js')
+    app: path.join(projectSourcePath, 'app/main.js'),
+    vendor: ['react']
   },
   output: {
     publicPath: '/',
@@ -52,14 +53,7 @@ export default webpackMerge(webpackConfigBase, {
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks (module, count) {
-        // any required modules inside node_modules are extracted to vendor
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(path.join(projectRootPath, 'node_modules')) === 0
-        )
-      }
+      minChunks: 2
     }),
     // extract webpack runtime and module manifest to its own file in order to
     // prevent vendor hash from being updated whenever app bundle is updated
