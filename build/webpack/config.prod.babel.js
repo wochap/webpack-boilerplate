@@ -15,8 +15,8 @@ export default webpackMerge(webpackConfigBase, {
   },
   output: {
     publicPath: '/',
-    filename: 'static/js/[name].[chunkhash].js',
-    chunkFilename: 'static/js/[name].[chunkhash].chunk.js'
+    filename: 'static/js/[name].[chunkhash:8].js',
+    chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js'
   },
   module: {
     loaders: [
@@ -68,7 +68,7 @@ export default webpackMerge(webpackConfigBase, {
       chunks: ['vendor']
     }),
     // extract the CSS into a separate file
-    new ExtractTextPlugin('static/css/[name].[contenthash].css'),
+    new ExtractTextPlugin('static/css/[name].[contenthash:8].css'),
     // minify and optimize the index.html
     new HtmlWebpackPlugin({
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
