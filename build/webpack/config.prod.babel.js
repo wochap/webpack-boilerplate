@@ -4,6 +4,7 @@ import webpackMerge from 'webpack-merge'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import ManifestPlugin from 'webpack-manifest-plugin'
+import InlineManifestWebpackPlugin from 'inline-manifest-webpack-plugin'
 
 import webpackConfigBase from './config.base.babel'
 import {projectRootPath, projectSourcePath, templatePath} from '../config'
@@ -79,6 +80,10 @@ export default webpackMerge(webpackConfigBase, {
         removeComments: true,
         collapseWhitespace: true
       }
+    }),
+    // https://www.npmjs.com/package/inline-manifest-webpack-plugin
+    new InlineManifestWebpackPlugin({
+        name: 'vendorManifest'
     }),
     // this will generate a assets-manifest.json file
     // in the output file you can see all assets' paths
