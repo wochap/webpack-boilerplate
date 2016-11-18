@@ -80,10 +80,10 @@ export default webpackMerge(webpackConfigBase, {
         collapseWhitespace: true
       }
     }),
-    // this will generate a webpack-manifest.json file
+    // this will generate a assets-manifest.json file
     // in the output file you can see all assets' paths
     new ManifestPlugin({
-      fileName: 'webpack-manifest.json',
+      fileName: 'assets-manifest.json',
       basePath: '/'
     })
   ]
