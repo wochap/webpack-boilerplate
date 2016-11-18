@@ -62,6 +62,13 @@ export default {
     configFile: path.join(projectRootPath, '.eslintrc.js')
   },
   postcss: [
-    require('autoprefixer')({browsers: ['last 2 versions']})
+    require('autoprefixer')({
+      browsers: [
+        '>1%',
+        'last 4 versions',
+        'Firefox ESR',
+        'not ie < 9'
+      ]
+    })
   ]
 }

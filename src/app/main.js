@@ -1,4 +1,6 @@
+// favicon to keep your browser from throwing a 404 during dev
 import 'src/favicon.ico'
+
 import 'src/styles/main.scss'
 
 import React from 'react'

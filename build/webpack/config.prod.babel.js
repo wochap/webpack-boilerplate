@@ -4,6 +4,7 @@ import webpackMerge from 'webpack-merge'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import ManifestPlugin from 'webpack-manifest-plugin'
+import InlineManifestWebpackPlugin from 'inline-manifest-webpack-plugin'
 
 import webpackConfigBase from './config.base.babel'
 import {projectRootPath, projectSourcePath, templatePath} from '../config'
@@ -16,8 +17,8 @@ export default webpackMerge(webpackConfigBase, {
   },
   output: {
     publicPath: '/',
-    filename: 'static/js/[name].[chunkhash].js',
-    chunkFilename: 'static/js/[name].[chunkhash].chunk.js'
+    filename: 'static/js/[name].[chunkhash:8].js',
+    chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js'
   },
   module: {
     loaders: [
@@ -62,7 +63,7 @@ export default webpackMerge(webpackConfigBase, {
       chunks: ['vendor']
     }),
     // extract the CSS into a separate file
-    new ExtractTextPlugin('static/css/[name].[contenthash].css'),
+    new ExtractTextPlugin('static/css/[name].[contenthash:8].css'),
     // minify and optimize the index.html
     new HtmlWebpackPlugin({
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
@@ -74,10 +75,14 @@ export default webpackMerge(webpackConfigBase, {
         collapseWhitespace: true
       }
     }),
-    // this will generate a webpack-manifest.json file
+    // https://www.npmjs.com/package/inline-manifest-webpack-plugin
+    new InlineManifestWebpackPlugin({
+        name: 'vendorManifest'
+    }),
+    // this will generate a assets-manifest.json file
     // in the output file you can see all assets' paths
     new ManifestPlugin({
-      fileName: 'webpack-manifest.json',
+      fileName: 'assets-manifest.json',
       basePath: '/'
     })
   ]
