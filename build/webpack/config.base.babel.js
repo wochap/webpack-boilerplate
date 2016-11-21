@@ -33,6 +33,9 @@ export default {
         include: projectSourcePath,
         exclude: /node_modules/
       }, {
+        test: /\.json$/,
+        loader: 'json-loader'
+      }, {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         include: projectSourcePath,
