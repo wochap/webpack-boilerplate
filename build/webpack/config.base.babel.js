@@ -36,19 +36,62 @@ export default {
         test: /\.json$/,
         loader: 'json-loader'
       }, {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
+        test: /\.(png|jpe?g|gif)(\?.*)?$/,
+        loader: 'file-loader',
         include: projectSourcePath,
         query: {
-          limit: 10000,
           name: 'static/img/[name].[ext]'
         }
       }, {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        test: /\.svg(\?v=\d+.\d+.\d+)?$/,
         loader: 'url-loader',
         include: projectSourcePath,
         query: {
           limit: 10000,
+          mimetype: 'image/svg+xml',
+          name: 'static/img/[name].[ext]'
+        }
+      }, {
+        test: /\.eot(\?.*)?$/,
+        loader: 'file-loader',
+        include: projectSourcePath,
+        query: {
+          name: 'static/fonts/[name].[ext]'
+        }
+      }, {
+        test: /\.otf(\?.*)?$/,
+        loader: 'url-loader',
+        include: projectSourcePath,
+        query: {
+          limit: 10000,
+          mimetype: 'font/opentype',
+          name: 'static/fonts/[name].[ext]'
+        }
+      }, {
+        test: /\.ttf(\?v=\d+.\d+.\d+)?$/,
+        loader: 'url-loader',
+        include: projectSourcePath,
+        query: {
+          limit: 10000,
+          mimetype: 'application/octet-stream',
+          name: 'static/fonts/[name].[ext]'
+        }
+      }, {
+        test: /\.woff(\?.*)?$/,
+        loader: 'url-loader',
+        include: projectSourcePath,
+        query: {
+          limit: 10000,
+          mimetype: 'application/font-woff',
+          name: 'static/fonts/[name].[ext]'
+        }
+      }, {
+        test: /\.woff2(\?.*)?$/,
+        loader: 'url-loader',
+        include: projectSourcePath,
+        query: {
+          limit: 10000,
+          mimetype: 'application/font-woff2',
           name: 'static/fonts/[name].[ext]'
         }
       }, {
