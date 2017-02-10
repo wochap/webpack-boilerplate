@@ -10,7 +10,7 @@ import history from 'connect-history-api-fallback'
 import express from 'express'
 
 import webpackConfigDev from '../webpack/config.dev.babel'
-import {CURRENT_IP, WEBPACK_SERVER_PORT} from '../config'
+import {CURRENT_IP, WEBPACK_SERVER_PORT, projectPublicPath} from '../config'
 
 const app = express()
 
@@ -32,6 +32,9 @@ compiler.plugin('compilation', function (compilation) {
     cb()
   })
 })
+
+// serve public folder
+app.use('/', express.static(projectPublicPath))
 
 // handle fallback for HTML5 history API
 app.use(history())
