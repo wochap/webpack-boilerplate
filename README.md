@@ -1,46 +1,64 @@
-# Basic webpack boilerplate
+# Webpack boilerplate
 
-> Start your next project using technologies that you love
+A highly scalable and simple webpack boilerplate for **client** apps.
 
-A starting point for your next app
+## Quick start
 
-![Demo](https://drive.google.com/uc?export=download&id=0BwM5_eez3JnoVlBCX1NmX1BhelU)
+Rename `.env.example` to `.env`. Then:
 
-## What’s Inside?
-
-* [Express](http://expressjs.com/) with [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) and [webpack-hot-middleware](https://github.com/glenjamin/webpack-hot-middleware)
-* [Webpack](https://webpack.github.io/) with:
-  - [html-webpack-plugin](https://github.com/ampedandwired/html-webpack-plugin)
-  - [browser-sync-webpack-plugin](https://github.com/Va1/browser-sync-webpack-plugin)
-  - [webpack-manifest-plugin](https://github.com/danethurber/webpack-manifest-plugin)
-  - [postcss-loader](https://github.com/postcss/postcss-loader) with [autoprefixer](https://github.com/postcss/autoprefixer)
-  - [sass-loader](https://github.com/jtangelder/sass-loader)
-  - [eslint-loader](https://github.com/MoOx/eslint-loader)
-  - [babel-loader](https://github.com/babel/babel-loader)
-  - [url-loader](https://github.com/webpack/url-loader)
-  - [file-loader](https://github.com/webpack/file-loader)
-* [ESLint](http://eslint.org/) with [eslint-config-standard](https://github.com/feross/eslint-config-standard), [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) and [eslint-import-resolver-webpack](https://www.npmjs.com/package/eslint-import-resolver-webpack)
-* [Babel](http://babeljs.io/) with [preset-es2015](https://babeljs.io/docs/plugins/preset-es2015/) and [plugin-transform-runtime](https://www.npmjs.com/package/babel-plugin-transform-runtime)
-
-## Development
-
-``` bash
+```sh
 # install dependencies
-$ npm install
+$ yarn
 
-# serve with hot reload at localhost:8080
-$ npm run dev
+# serve with hot reload
+$ yarn build:watch
 
-# build for production with minification and serve dist files at localhost:8080
-$ npm run build
+# build for production with minification
+$ yarn build
 ```
 
-In development, if you are working with a backend like [Laravel](https://laravel.com/), you will need to add a script to your template file:
+## Documentation
 
-```html
-...
-<script src="http:/[localhost|ip]:[port]/app.js"></script>
-...
+### Features
+
+* HMR
+* CSS < PostCSS < SCSS
+* JS < ES2015 < ESLint
+* Browser Sync
+* Images and fonts well configured.
+* Long term caching.
+* Tree shaking.
+
+### Boilerplate structure
+
+```
+.
+├── .babelrc                  # babel config
+├── .editorconfig             # editor config
+├── .env.example              # env variables example
+├── .eslintignore             # eslint ignore config
+├── .eslintrc                 # eslint config
+├── .gitignore                # git ignore config
+├── .nvmrc                    # nvm config
+├── .tern-project             # atom-ternjs project config
+├── package.json              # https://docs.npmjs.com/files/package.json
+├── postcss.config.js         # postcss config
+├── README.md                 # this file
+├── webpack.config.js         # webpack config
+├── yarn.lock                 # https://yarnpkg.com/en/docs/yarn-lock
+├── dist/                     # webpack build output
+├── lib/                      # future external packages
+├── public/                   # files that will be copied to dist
+└── src/                      # source code
+    ├── app/
+    │   └── main.js           # app entry file
+    ├── styles/
+    │   └── main.scss         # main scss file
+    └── index.html            # template used by html-webpack-plugin
 ```
 
-Use `IP` if you run your app from external devices.
+## TODO
+
+- [ ] Refresh on each html-webpack-plugin template change.
+- [ ] Ignore webpack modules (e.g.: buffer, style-loader, etc) in production build.
+- [ ] Remove extra logs on production build.
