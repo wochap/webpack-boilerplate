@@ -15,6 +15,15 @@ $ yarn build:watch
 
 # build for production with minification
 $ yarn build
+
+# run tests
+$ yarn test
+
+# run tests and watch
+$ yarn test:watch
+
+# run test coverage report
+$ yarn test:coverage
 ```
 
 ## Documentation
@@ -28,6 +37,7 @@ $ yarn build
 * Images and fonts well configured.
 * Long term caching.
 * Tree shaking.
+* Tests with Jest.
 
 ### Boilerplate structure
 
@@ -47,6 +57,7 @@ $ yarn build
 ├── webpack.config.js         # webpack config
 ├── yarn.lock                 # https://yarnpkg.com/en/docs/yarn-lock
 ├── dist/                     # webpack build output
+├── jest-config/              # jest config
 ├── lib/                      # future external packages
 ├── public/                   # files that will be copied to dist
 └── src/                      # source code
