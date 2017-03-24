@@ -21,6 +21,9 @@ module.exports = {
     port: process.env.WEBPACK_SERVER_PORT,
     host: '0.0.0.0',
 
+    // handle fallback for HTML5 history API
+    historyApiFallback: true,
+
     // show compile errors
     overlay: true,
 
