@@ -56,7 +56,8 @@ module.exports = {
     alias: {
       'src': resolve(__dirname, 'src'),
       'app': resolve(__dirname, 'src/app'),
-      'styles': resolve(__dirname, 'src/styles')
+      'styles': resolve(__dirname, 'src/styles'),
+      'lib': resolve(__dirname, 'lib')
     },
     modules: ['node_modules', 'shared']
   },
