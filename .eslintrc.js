@@ -1,21 +1,17 @@
-const DEBUG = process.env.NODE_ENV !== 'production'
+const isProduction = process.env.NODE_ENV === 'production'
 
 module.exports = {
-  'root': true,
-  'extends': [
+  root: true,
+  extends: [
     'plugin:import/errors',
     'plugin:import/warnings',
     'standard'
   ],
-  'settings': {
-    'import/resolver': {
-      'webpack': {
-        'config': 'build/webpack/config.base.babel.js'
-      }
-    }
+  settings: {
+    'import/resolver': 'eslint-import-resolver-webpack'
   },
   rules: {
-    'no-console': DEBUG ? 0 : 2,
-    'no-debugger': DEBUG ? 0 : 2
+    'no-console': isProduction ? 2 : 0,
+    'no-debugger': isProduction ? 2 : 0
   }
 }
