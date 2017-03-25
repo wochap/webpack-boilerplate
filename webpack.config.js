@@ -240,7 +240,7 @@ module.exports = {
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
       template: './index.html',
-      inject: ifProduction(true, 'head'),
+      inject: true,
       minify: ifProduction({
         removeComments: true,
         collapseWhitespace: true
