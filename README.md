@@ -70,6 +70,16 @@ $ yarn test:coverage
     └── index.html            # template used by html-webpack-plugin
 ```
 
+### Troubleshooting
+
+* `Module build failed: Error: ENOENT: no such file or directory, scandir`
+
+Rebuild node-sass
+
+```sh
+$ npm rebuild node-sass
+```
+
 ## TODO
 
 - [ ] Refresh on each html-webpack-plugin template change.
