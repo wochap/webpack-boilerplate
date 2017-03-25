@@ -6,8 +6,6 @@ A highly scalable and simple webpack boilerplate for **client** apps.
 
 Rename `.env.example` to `.env`. Then:
 
-**NOTE: For disable sourceMap, just remove it from `.env` file.**
-
 ```sh
 # install dependencies
 $ yarn
@@ -27,6 +25,8 @@ $ yarn test:watch
 # run test coverage report
 $ yarn test:coverage
 ```
+
+**NOTE: For disable sourceMap, just remove it from `.env` file.**
 
 ## Documentation
 
