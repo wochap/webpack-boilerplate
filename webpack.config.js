@@ -243,7 +243,7 @@ module.exports = {
       })
     ),
 
-    ifProduction(new BundleAnalyzerPlugin()),
+    process.env.BUNDLE_ANALYZER_REPORT && ifProduction(new BundleAnalyzerPlugin()),
     ifProduction(new ExtractTextPlugin('static/css/[name].[chunkhash:8].css')),
 
     new HtmlWebpackPlugin({
