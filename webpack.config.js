@@ -17,6 +17,13 @@ const {ifProduction, ifNotProduction} = getIfUtils(process.env.NODE_ENV)
 module.exports = {
   context: resolve(__dirname, 'src'),
   devtool: ifProduction(!!process.env.SOURCE_MAP && 'source-map', 'eval'),
+  stats: {
+    colors: true,
+    children: false,
+    chunks: false,
+    chunkModules: false,
+    modules: false
+  },
   devServer: {
     port: process.env.WEBPACK_SERVER_PORT,
     host: '0.0.0.0',
