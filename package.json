@@ -4,9 +4,9 @@
     "prebuild": "shx rm -rf dist && shx mkdir -p dist && shx cp -R public/* dist || true",
     "build": "cross-env NODE_ENV=production webpack",
     "build:watch": "cross-env NODE_ENV=development webpack-dev-server",
-    "test": "cross-env NODE_ENV=test jest --config=jest-config/index.json",
-    "test:watch": "cross-env NODE_ENV=test jest --config=jest-config/index.json --watch",
-    "test:cover": "cross-env NODE_ENV=test jest --config=jest-config/index.json --coverage"
+    "test": "cross-env NODE_ENV=test jest --config=test/jest.config.json",
+    "test:watch": "cross-env NODE_ENV=test jest --config=test/jest.config.json --watch",
+    "test:coverage": "cross-env NODE_ENV=test jest --config=test/jest.config.json --coverage"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",

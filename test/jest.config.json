@@ -9,8 +9,8 @@
     "shared"
   ],
   "moduleNameMapper": {
-    "^.+\\.(png|jpe?g|gif|svg|ico|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jest-config/FileStub.js",
-    "^.+\\.(css|scss)$": "<rootDir>/jest-config/CSSStub.js",
+    "^.+\\.(png|jpe?g|gif|svg|ico|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/FileStub.js",
+    "^.+\\.(css|scss)$": "<rootDir>/test/CSSStub.js",
     "^src(.*)$": "<rootDir>/src$1",
     "^app(.*)$": "<rootDir>/src/app$1",
     "^styles(.*)$": "<rootDir>/src/styles$1",
