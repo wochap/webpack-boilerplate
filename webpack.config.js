@@ -1,4 +1,4 @@
-require('dotenv').load()
+require('dotenv').config()
 
 const {resolve} = require('path')
 const webpack = require('webpack')
@@ -16,7 +16,7 @@ const {ifProduction, ifNotProduction} = getIfUtils(process.env.NODE_ENV)
 
 module.exports = {
   context: resolve(__dirname, 'src'),
-  devtool: ifProduction(process.env.SOURCE_MAP && 'source-map', 'eval'),
+  devtool: ifProduction(!!process.env.SOURCE_MAP && 'source-map', 'eval'),
   devServer: {
     port: process.env.WEBPACK_SERVER_PORT,
     host: '0.0.0.0',
@@ -163,6 +163,14 @@ module.exports = {
       }
     }),
 
+    new webpack.LoaderOptionsPlugin({
+      // css loader config
+      minimize: ifProduction(),
+      sourceMap: ifProduction(!!process.env.SOURCE_MAP),
+
+      debug: ifNotProduction()
+    }),
+
     // any required modules inside node_modules are extracted to vendor
     ifProduction(
       new webpack.optimize.CommonsChunkPlugin({
@@ -215,18 +223,10 @@ module.exports = {
     // prints more readable module names in the browser console on HMR updates
     ifNotProduction(new webpack.NamedModulesPlugin()),
 
-    new webpack.LoaderOptionsPlugin({
-      // css loader config
-      minimize: ifProduction(),
-      sourceMap: ifProduction(process.env.SOURCE_MAP),
-
-      debug: ifNotProduction()
-    }),
-
     ifProduction(
       // minify and optimize the javaScript
       new webpack.optimize.UglifyJsPlugin({
-        sourceMap: process.env.SOURCE_MAP,
+        sourceMap: !!process.env.SOURCE_MAP,
         output: {
           comments: false
         }
