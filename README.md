@@ -58,8 +58,9 @@ $ yarn test:coverage
 ├── README.md                 # this file
 ├── webpack.config.js         # webpack config
 ├── yarn.lock                 # https://yarnpkg.com/en/docs/yarn-lock
+├── coverage/                 # jest coverage output
 ├── dist/                     # webpack build output
-├── jest-config/              # jest config
+├── test/                     # jest config
 ├── lib/                      # future external packages
 ├── public/                   # files that will be copied to dist
 └── src/                      # source code

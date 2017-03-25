@@ -83,8 +83,11 @@ module.exports = {
       {
         test: /\.js$/,
         enforce: 'pre',
-        use: 'eslint-loader',
-        exclude: /node_modules/
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        options: {
+          formatter: require('eslint-friendly-formatter')
+        }
       }, {
         test: /\.js$/,
         use: 'babel-loader',

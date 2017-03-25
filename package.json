@@ -25,6 +25,7 @@
     "dotenv": "^4.0.0",
     "eslint": "^3.18.0",
     "eslint-config-standard": "^7.1.0",
+    "eslint-friendly-formatter": "^2.0.7",
     "eslint-import-resolver-webpack": "^0.8.1",
     "eslint-loader": "^1.6.3",
     "eslint-plugin-import": "^2.2.0",
