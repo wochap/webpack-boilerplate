@@ -246,7 +246,8 @@ module.exports = {
     ),
 
     process.env.BUNDLE_ANALYZER_REPORT && ifProduction(new BundleAnalyzerPlugin()),
-    ifProduction(new ExtractTextPlugin('static/css/[name].[chunkhash:8].css')),
+    
+    ifProduction(new ExtractTextPlugin('static/css/[name].[contenthash:8].css')),
 
     new HtmlWebpackPlugin({
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
