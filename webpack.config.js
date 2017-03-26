@@ -114,7 +114,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif)(\?.*)?$/,
         loader: 'file-loader',
         options: {
-          name: ifProduction('static/img/[name].[ext]', '[name].[ext]')
+          name: ifProduction('static/img/[name].[hash:8].[ext]', '[name].[ext]')
         }
       }, {
         test: /\.svg(\?v=\d+.\d+.\d+)?$/,
@@ -122,13 +122,15 @@ module.exports = {
         options: {
           limit: 10000,
           mimetype: 'image/svg+xml',
-          name: ifProduction('static/img/[name].[ext]', '[name].[ext]')
+          name: ifProduction('static/img/[name].[hash:8].[ext]', '[name].[ext]')
         }
       }, {
         test: /\.eot(\?.*)?$/,
-        loader: 'file-loader',
+        loader: 'url-loader',
         options: {
-          name: ifProduction('static/fonts/[name].[ext]', '[name].[ext]')
+          limit: 10000,
+          mimetype: 'application/vnd.ms-fontobject',
+          name: ifProduction('static/fonts/[name].[hash:8].[ext]', '[name].[ext]')
         }
       }, {
         test: /\.otf(\?.*)?$/,
@@ -136,7 +138,7 @@ module.exports = {
         options: {
           limit: 10000,
           mimetype: 'font/opentype',
-          name: ifProduction('static/fonts/[name].[ext]', '[name].[ext]')
+          name: ifProduction('static/fonts/[name].[hash:8].[ext]', '[name].[ext]')
         }
       }, {
         test: /\.ttf(\?v=\d+.\d+.\d+)?$/,
@@ -144,7 +146,7 @@ module.exports = {
         options: {
           limit: 10000,
           mimetype: 'application/octet-stream',
-          name: ifProduction('static/fonts/[name].[ext]', '[name].[ext]')
+          name: ifProduction('static/fonts/[name].[hash:8].[ext]', '[name].[ext]')
         }
       }, {
         test: /\.woff(\?.*)?$/,
@@ -152,7 +154,7 @@ module.exports = {
         options: {
           limit: 10000,
           mimetype: 'application/font-woff',
-          name: ifProduction('static/fonts/[name].[ext]', '[name].[ext]')
+          name: ifProduction('static/fonts/[name].[hash:8].[ext]', '[name].[ext]')
         }
       }, {
         test: /\.woff2(\?.*)?$/,
@@ -160,7 +162,7 @@ module.exports = {
         options: {
           limit: 10000,
           mimetype: 'application/font-woff2',
-          name: ifProduction('static/fonts/[name].[ext]', '[name].[ext]')
+          name: ifProduction('static/fonts/[name].[hash:8].[ext]', '[name].[ext]')
         }
       }
     ]
