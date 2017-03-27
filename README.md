@@ -13,6 +13,10 @@ $ yarn
 # serve with hot reload
 $ yarn build:watch
 
+# serve with hot reload and inspect
+# https://nodejs.org/api/debugger.html#debugger_v8_inspector_integration_for_node_js
+$ yarn build:watch:inspect
+
 # build for production with minification
 $ yarn build
 

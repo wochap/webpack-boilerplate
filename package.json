@@ -4,6 +4,7 @@
     "prebuild": "shx rm -rf dist && shx mkdir -p dist && shx cp -R public/* dist || true",
     "build": "cross-env NODE_ENV=production webpack",
     "build:watch": "cross-env NODE_ENV=development webpack-dev-server",
+    "build:watch:inspect": "cross-env NODE_ENV=development node --inspect node_modules/.bin/webpack-dev-server",
     "test": "cross-env NODE_ENV=test jest --config=test/jest.config.json",
     "test:watch": "cross-env NODE_ENV=test jest --config=test/jest.config.json --watch",
     "test:coverage": "cross-env NODE_ENV=test jest --config=test/jest.config.json --coverage"
