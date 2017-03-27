@@ -246,7 +246,7 @@ module.exports = {
     ),
 
     process.env.BUNDLE_ANALYZER_REPORT && ifProduction(new BundleAnalyzerPlugin()),
-    
+
     ifProduction(new ExtractTextPlugin('static/css/[name].[contenthash:8].css')),
 
     new HtmlWebpackPlugin({
