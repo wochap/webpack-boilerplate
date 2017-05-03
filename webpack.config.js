@@ -26,6 +26,7 @@ module.exports = {
   },
   devServer: {
     port: process.env.WEBPACK_SERVER_PORT,
+    disableHostCheck: true,
     host: '0.0.0.0',
 
     // handle fallback for HTML5 history API
