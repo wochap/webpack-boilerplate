@@ -94,8 +94,11 @@ module.exports = {
         }
       }, {
         test: /\.js$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        options: {
+          cacheDirectory: true
+        }
       }, {
         test: /\.css$/,
         use: ifProduction(
