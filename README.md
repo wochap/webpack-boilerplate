@@ -12,10 +12,12 @@ $ yarn
 
 # serve with hot reload
 $ yarn build:watch
+# or
+$ yarn dev
 
-# serve with hot reload and inspect
+# serve with hot reload and inspect webpack dev server
 # https://nodejs.org/api/debugger.html#debugger_v8_inspector_integration_for_node_js
-$ yarn build:watch:inspect
+$ yarn dev:inspect
 
 # build for production with minification
 $ yarn build
@@ -30,7 +32,7 @@ $ yarn test:watch
 $ yarn test:coverage
 ```
 
-**NOTE: For disable sourceMap, just remove it from `.env` file.**
+**NOTE: For disable sourceMap (on production only), just remove it from `.env` file.**
 
 ## Documentation
 
