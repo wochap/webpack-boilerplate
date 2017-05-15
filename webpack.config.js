@@ -264,7 +264,7 @@ module.exports = {
       })
     }),
 
-    ifNotProduction(
+    process.env.BROWSER_SYNC && ifNotProduction(
       new BrowserSyncPlugin({
         open: false,
         port: process.env.BROWSER_SYNC_PORT,

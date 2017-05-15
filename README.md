@@ -32,7 +32,7 @@ $ yarn test:watch
 $ yarn test:coverage
 ```
 
-**NOTE: For disable sourceMap (on production only), just remove it from `.env` file.**
+**NOTE: For disable source map or bundle analyzer report (both on production only) and browser sync (on development), just remove it from `.env` file.**
 
 ## Documentation
 
