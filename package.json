@@ -38,6 +38,7 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.10.1",
     "html-webpack-plugin": "^2.28.0",
+    "http-server": "^0.10.0",
     "inline-manifest-webpack-plugin": "^3.0.1",
     "jest": "^19.0.2",
     "my-local-ip": "^1.0.0",
