@@ -202,7 +202,6 @@ module.exports = {
       }
     }),
 
-
     // extract manifest
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest'
