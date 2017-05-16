@@ -13,6 +13,7 @@ const {getIfUtils, removeEmpty} = require('webpack-config-utils')
 const CURRENT_IP = require('my-local-ip')()
 const externalPath = `http://${CURRENT_IP}:${process.env.WEBPACK_SERVER_PORT}/`
 const {ifProduction, ifNotProduction} = getIfUtils(process.env.NODE_ENV)
+const rootNodeModulesPath = resolve(__dirname, 'node_modules')
 
 module.exports = {
   context: resolve(__dirname, 'src'),
@@ -191,32 +192,31 @@ module.exports = {
     }),
 
     // any required modules inside node_modules are extracted to vendor
-    ifProduction(
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks ({context}, count) {
-          // TODO: ignore webpack modules (e.g.: buffer, style-loader, etc)
-          return context && context.indexOf('node_modules') >= 0
-        }
-      })
-    ),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks ({resource}, count) {
+        // TODO: ignore webpack modules (e.g.: buffer, style-loader, etc)
+        return resource &&
+          /\.js$/.test(resource) &&
+          resource.indexOf(rootNodeModulesPath) === 0
+      }
+    }),
+
 
     // extract manifest
-    ifProduction(
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'manifest'
-      })
-    ),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest'
+    }),
 
     // catch all - anything used in more than one place
-    ifProduction(
-      new webpack.optimize.CommonsChunkPlugin({
-        async: 'common',
-        minChunks (module, count) {
-          return count >= 2
-        }
-      })
-    ),
+    // ifProduction(
+    //   new webpack.optimize.CommonsChunkPlugin({
+    //     async: 'common',
+    //     minChunks (module, count) {
+    //       return count >= 2
+    //     }
+    //   })
+    // ),
 
     // create a specific chunk for these modules
     // https://medium.com/@adamrackis/vendor-and-code-splitting-in-webpack-2-6376358f1923#.selnbx3gp
