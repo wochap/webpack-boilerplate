@@ -245,8 +245,16 @@ module.exports = {
       // minify and optimize the javaScript
       new webpack.optimize.UglifyJsPlugin({
         sourceMap: !!process.env.SOURCE_MAP,
+        compress: {
+          screw_ie8: true,
+          warnings: false
+        },
+        mangle: {
+          screw_ie8: true
+        },
         output: {
-          comments: false
+          comments: false,
+          screw_ie8: true
         }
       })
     ),
@@ -262,7 +270,11 @@ module.exports = {
       inject: true,
       minify: ifProduction({
         removeComments: true,
-        collapseWhitespace: true
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
       })
     }),
 
