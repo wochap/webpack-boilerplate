@@ -12,7 +12,7 @@ const {getIfUtils, removeEmpty} = require('webpack-config-utils')
 
 const CURRENT_IP = require('my-local-ip')()
 const externalPath = `http://${CURRENT_IP}:${process.env.WEBPACK_SERVER_PORT}/`
-const {ifProduction, ifNotProduction} = getIfUtils(process.env.NODE_ENV)
+const {ifProduction, ifNotProduction, ifDevelopment} = getIfUtils(process.env.NODE_ENV)
 const rootNodeModulesPath = resolve(__dirname, 'node_modules')
 
 module.exports = {
@@ -58,11 +58,11 @@ module.exports = {
   entry: {
     app: removeEmpty([
       // fix HMR in IE
-      ifNotProduction('eventsource-polyfill'),
+      ifDevelopment('eventsource-polyfill'),
 
       // bundle the client for webpack-dev-server
       // and connect to the provided endpoint
-      ifNotProduction(`webpack-dev-server/client?${externalPath}`),
+      ifDevelopment(`webpack-dev-server/client?${externalPath}`),
 
       './app/main.js'
     ])
@@ -77,7 +77,7 @@ module.exports = {
     modules: ['node_modules', 'shared']
   },
   output: {
-    publicPath: ifProduction('/', externalPath),
+    publicPath: ifDevelopment(externalPath, '/'),
     filename: ifProduction('static/js/bundle.[name].[chunkhash:8].js', 'bundle.[name].js'),
     chunkFilename: ifProduction('static/js/chunk.[name].[chunkhash:8].js', 'chunk.[name].js'),
     path: resolve(__dirname, 'dist'),
@@ -179,7 +179,7 @@ module.exports = {
     // define globals
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: ifProduction('"production"', '"development"')
+        NODE_ENV: ifDevelopment('"development"', '"production"')
       }
     }),
 
@@ -236,7 +236,7 @@ module.exports = {
     ),
 
     // enable HMR globally
-    ifNotProduction(new webpack.HotModuleReplacementPlugin()),
+    ifDevelopment(new webpack.HotModuleReplacementPlugin()),
 
     // prints more readable module names in the browser console on HMR updates
     ifNotProduction(new webpack.NamedModulesPlugin()),
