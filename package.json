@@ -47,6 +47,7 @@
     "node-sass": "^4.5.3",
     "postcss-loader": "^1.3.3",
     "progress-bar-webpack-plugin": "^1.9.3",
+    "react-dev-utils": "^2.0.1",
     "sass-loader": "^6.0.5",
     "shx": "^0.2.2",
     "style-loader": "^0.17.0",

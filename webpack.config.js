@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
 const {getIfUtils, removeEmpty} = require('webpack-config-utils')
 
 const CURRENT_IP = require('my-local-ip')()
@@ -234,6 +235,9 @@ module.exports = {
         name: 'webpackManifest'
       })
     ),
+
+    // ensures npm install <library> forces a project rebuild
+    ifDevelopment(new WatchMissingNodeModulesPlugin(rootNodeModulesPath)),
 
     // enable HMR globally
     ifDevelopment(new webpack.HotModuleReplacementPlugin()),
