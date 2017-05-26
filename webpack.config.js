@@ -63,6 +63,7 @@ module.exports = {
 
       // bundle the client for webpack-dev-server
       // and connect to the provided endpoint
+      // it enable HMR from external devices
       ifDevelopment(`webpack-dev-server/client?${externalPath}`),
 
       './app/main.js'
@@ -241,6 +242,8 @@ module.exports = {
 
     // enable HMR globally
     ifDevelopment(new webpack.HotModuleReplacementPlugin()),
+    // don't compile if error
+    ifDevelopment(new webpack.NoEmitOnErrorsPlugin()),
 
     // prints more readable module names in the browser console on HMR updates
     ifNotProduction(new webpack.NamedModulesPlugin()),
