@@ -22,5 +22,9 @@
   "collectCoverageFrom": [
     "src/**/*.js",
     "!**/node_modules/**"
-  ]
+  ],
+  "transform": {
+    "^.+\\.js$": "babel-jest",
+    ".*\\.(vue)$": "jest-vue-preprocessor"
+  }
 }
