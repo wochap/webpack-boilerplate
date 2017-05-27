@@ -9,6 +9,7 @@ const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const {getIfUtils, removeEmpty} = require('webpack-config-utils')
 
 const CURRENT_IP = require('my-local-ip')()
@@ -70,6 +71,7 @@ module.exports = {
     ])
   },
   resolve: {
+    extensions: ['.js', '.vue', '.json'],
     alias: {
       'src': resolve(__dirname, 'src'),
       'app': resolve(__dirname, 'src/app'),
@@ -88,7 +90,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|vue)$/,
         enforce: 'pre',
         loader: 'eslint-loader',
         exclude: /node_modules/,
@@ -101,6 +103,20 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           cacheDirectory: true
+        }
+      }, {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            scss: ifProduction(
+              ExtractTextPlugin.extract({
+                fallback: 'vue-style-loader',
+                use: ['css-loader', 'postcss-loader', 'sass-loader']
+              }),
+              ['vue-style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+            )
+          }
         }
       }, {
         test: /\.css$/,
@@ -204,6 +220,18 @@ module.exports = {
       }
     }),
 
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vue',
+      minChunks ({resource}) {
+        const targets = ['vue', 'vue-router', 'vuex', 'vuex-router-sync']
+
+        return resource &&
+          /\.js$/.test(resource) &&
+          resource.indexOf(rootNodeModulesPath) === 0 &&
+          targets.find(t => new RegExp(`${rootNodeModulesPath}/${t}/`, 'i').test(resource))
+      }
+    }),
+
     // extract manifest
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest'
@@ -215,18 +243,6 @@ module.exports = {
     //     async: 'common',
     //     minChunks (module, count) {
     //       return count >= 2
-    //     }
-    //   })
-    // ),
-
-    // create a specific chunk for these modules
-    // https://medium.com/@adamrackis/vendor-and-code-splitting-in-webpack-2-6376358f1923#.selnbx3gp
-    // ifProduction(
-    //   new webpack.optimize.CommonsChunkPlugin({
-    //     async: 'react-dnd',
-    //     minChunks({context}, count) {
-    //       const targets = ['react-dnd', 'react-dnd-html5-backend', 'react-dnd-touch-backend', 'dnd-core']
-    //       return context && context.indexOf('node_modules') >= 0 && targets.find(t => new RegExp('\\\\' + t + '\\\\', 'i').test(context))
     //     }
     //   })
     // ),
@@ -269,6 +285,15 @@ module.exports = {
     process.env.BUNDLE_ANALYZER_REPORT && ifProduction(new BundleAnalyzerPlugin()),
 
     ifProduction(new ExtractTextPlugin('static/css/[name].[contenthash:8].css')),
+
+    // remove duplicate css
+    ifProduction(
+      new OptimizeCSSPlugin({
+        cssProcessorOptions: {
+          safe: true
+        }
+      })
+    ),
 
     new HtmlWebpackPlugin({
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
