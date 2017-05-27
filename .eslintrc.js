@@ -3,6 +3,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 module.exports = {
   root: true,
   parser: 'babel-eslint',
+  plugins: ['vue'],
   extends: [
     'plugin:import/errors',
     'plugin:import/warnings',
