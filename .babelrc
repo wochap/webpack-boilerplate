@@ -2,6 +2,7 @@
   "env": {
     "test": {
       "plugins": [
+        "transform-vue-jsx",
         "transform-es2015-modules-commonjs",
         "dynamic-import-node"
       ],
@@ -10,13 +11,19 @@
       ]
     },
     "development": {
+      "plugins": [
+        "transform-vue-jsx"
+      ],
       "presets": [
         ["es2015", {"modules": false}],
         "stage-1"
       ]
     },
     "production": {
-      "plugins": ["transform-runtime"],
+      "plugins": [
+        "transform-vue-jsx",
+        "transform-runtime"
+      ],
       "presets": [
         ["es2015", {"modules": false}],
         "stage-1"
