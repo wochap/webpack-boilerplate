@@ -1,5 +1,7 @@
-import {TEST} from '../main'
+import {sum} from '../main'
 
-it('Test', () => {
-  expect(TEST).toEqual('TEST')
+describe('main.js', () => {
+  it('sum', () => {
+    expect(sum(1, 2)).toEqual(3)
+  })
 })

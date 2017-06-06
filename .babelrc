@@ -3,20 +3,30 @@
     "test": {
       "plugins": [
         "transform-es2015-modules-commonjs",
-        "dynamic-import-node"
+        "dynamic-import-node",
+        "syntax-flow",
+        "transform-flow-strip-types"
       ],
       "presets": [
         "stage-1"
       ]
     },
     "development": {
+      "plugins": [
+        "syntax-flow",
+        "transform-flow-strip-types"
+      ],
       "presets": [
         ["es2015", {"modules": false}],
         "stage-1"
       ]
     },
     "production": {
-      "plugins": ["transform-runtime"],
+      "plugins": [
+        "transform-runtime",
+        "syntax-flow",
+        "transform-flow-strip-types"
+      ],
       "presets": [
         ["es2015", {"modules": false}],
         "stage-1"

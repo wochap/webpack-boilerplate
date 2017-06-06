@@ -23,5 +23,8 @@
   "collectCoverageFrom": [
     "src/**/*.js",
     "!**/node_modules/**"
-  ]
+  ],
+  "transform": {
+    "^.+\\.js$": "babel-jest"
+  }
 }

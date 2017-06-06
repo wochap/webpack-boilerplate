@@ -3,6 +3,9 @@ const isProduction = process.env.NODE_ENV === 'production'
 module.exports = {
   root: true,
   parser: 'babel-eslint',
+  plugins: [
+    'flowtype-errors'
+  ],
   extends: [
     'plugin:import/errors',
     'plugin:import/warnings',
@@ -17,6 +20,7 @@ module.exports = {
     jest: true
   },
   rules: {
+    'flowtype-errors/show-errors': 2,
     'no-console': isProduction ? 2 : 0,
     'no-debugger': isProduction ? 2 : 0
   }

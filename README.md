@@ -40,7 +40,7 @@ $ yarn test:coverage
 
 * HMR
 * CSS < PostCSS < SCSS
-* JS < ES2015 < ESLint
+* JS < ES2015 < ESLint + Flow
 * Browser Sync
 * Images and fonts well configured.
 * Long term caching.
@@ -56,6 +56,7 @@ $ yarn test:coverage
 ├── .env.example              # env variables example
 ├── .eslintignore             # eslint ignore config
 ├── .eslintrc                 # eslint config
+├── .flowconfig               # flow config
 ├── .gitignore                # git ignore config
 ├── .nvmrc                    # nvm config
 ├── .tern-project             # atom-ternjs project config
