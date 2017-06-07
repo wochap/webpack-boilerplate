@@ -1,17 +1,35 @@
 {
-  "presets": [
-    "es2015",
-    "stage-1",
-    "react"
-  ],
-  "plugins": [
-    "transform-runtime"
-  ],
   "env": {
+    "test": {
+      "plugins": [
+        "transform-es2015-modules-commonjs",
+        "dynamic-import-node",
+        "syntax-flow",
+        "transform-flow-strip-types"
+      ],
+      "presets": [
+        "stage-1"
+      ]
+    },
     "development": {
       "plugins": [
+        "syntax-flow",
+        "transform-flow-strip-types"
+      ],
+      "presets": [
+        ["es2015", {"modules": false}],
+        "stage-1"
+      ]
+    },
+    "production": {
+      "plugins": [
         "transform-runtime",
-        "react-hot-loader/babel"
+        "syntax-flow",
+        "transform-flow-strip-types"
+      ],
+      "presets": [
+        ["es2015", {"modules": false}],
+        "stage-1"
       ]
     }
   }

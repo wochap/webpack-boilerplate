@@ -1,31 +1,13 @@
-// favicon to keep your browser from throwing a 404 during dev
-import 'src/favicon.ico'
+// @flow
 
-import 'src/styles/main.scss'
+import '../styles/main.scss' // eslint-disable-line
 
-import React from 'react'
-import { render } from 'react-dom'
-import { AppContainer } from 'react-hot-loader' // eslint-disable-line
-import App from './App'
+export function sum (a: number, b: number): number {
+  return a + b
+}
 
-const rootEl = document.getElementById('root')
-
-render((
-  <AppContainer>
-    <App />
-  </AppContainer>),
-  rootEl,
-)
-
+// This tells Webpack that this file and all of its dependencies can be replaced.
+// http://andrewhfarmer.com/webpack-hmr-tutorial/#the-simple-way
 if (module.hot) {
-  module.hot.accept('./App', () => {
-    const NextApp = require('./App').default // eslint-disable-line
-
-    render((
-      <AppContainer>
-        <NextApp />
-      </AppContainer>),
-      rootEl,
-    )
-  })
+  module.hot.accept() // eslint-disable-line
 }

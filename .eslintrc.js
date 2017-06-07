@@ -1,28 +1,27 @@
-const DEBUG = process.env.NODE_ENV !== 'production'
+const isProduction = process.env.NODE_ENV === 'production'
 
 module.exports = {
-  'root': true,
-  'extends': [
+  root: true,
+  parser: 'babel-eslint',
+  plugins: [
+    'flowtype-errors'
+  ],
+  extends: [
     'plugin:import/errors',
     'plugin:import/warnings',
-    'eslint-config-airbnb'
+    'standard'
   ],
-  'env': {
-    'browser': true,
-    'node': true,
-    'jest': true
+  settings: {
+    'import/resolver': 'eslint-import-resolver-webpack'
   },
-  'settings': {
-    'import/resolver': {
-      'webpack': {
-        'config': 'build/webpack/config.base.babel.js'
-      }
-    }
+  env: {
+    browser: true,
+    node: true,
+    jest: true
   },
   rules: {
-    'semi': [2,'never'],
-    'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }],
-    'no-console': DEBUG ? 0 : 2,
-    'no-debugger': DEBUG ? 0 : 2
+    'flowtype-errors/show-errors': 2,
+    'no-console': isProduction ? 2 : 0,
+    'no-debugger': isProduction ? 2 : 0
   }
 }

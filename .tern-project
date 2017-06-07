@@ -8,7 +8,6 @@
   ],
   "dontLoad": [
     "node_modules/**/*.js",
-    "build/**/*.js",
     "dist/**/*.js"
   ],
   "plugins": {
