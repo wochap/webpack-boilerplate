@@ -9,7 +9,8 @@ module.exports = {
   extends: [
     'plugin:import/errors',
     'plugin:import/warnings',
-    'standard'
+    'standard',
+    'standard-react'
   ],
   settings: {
     'import/resolver': 'eslint-import-resolver-webpack'

@@ -38,6 +38,7 @@ $ yarn test:coverage
 
 ### Features
 
+* React + react-hot-loader
 * HMR
 * CSS < PostCSS < SCSS
 * JS < ES2015 < ESLint + Flow

@@ -3,33 +3,31 @@
     "test": {
       "plugins": [
         "transform-es2015-modules-commonjs",
-        "dynamic-import-node",
-        "syntax-flow",
-        "transform-flow-strip-types"
+        "dynamic-import-node"
       ],
       "presets": [
+        "react",
         "stage-1"
       ]
     },
     "development": {
       "plugins": [
-        "syntax-flow",
-        "transform-flow-strip-types"
+        "react-hot-loader/babel"
       ],
       "presets": [
         ["es2015", {"modules": false}],
-        "stage-1"
+        "stage-1",
+        "react"
       ]
     },
     "production": {
       "plugins": [
-        "transform-runtime",
-        "syntax-flow",
-        "transform-flow-strip-types"
+        "transform-runtime"
       ],
       "presets": [
         ["es2015", {"modules": false}],
-        "stage-1"
+        "stage-1",
+        "react"
       ]
     }
   }

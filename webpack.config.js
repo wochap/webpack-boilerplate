@@ -61,6 +61,9 @@ module.exports = {
       // fix HMR in IE
       ifDevelopment('eventsource-polyfill'),
 
+      // react-hot-loader patch
+      ifDevelopment('react-hot-loader/patch'),
+
       // bundle the client for webpack-dev-server
       // and connect to the provided endpoint
       // it enable HMR from external devices
@@ -204,6 +207,20 @@ module.exports = {
       }
     }),
 
+    // create a specific chunk for these modules
+    // https://medium.com/@adamrackis/vendor-and-code-splitting-in-webpack-2-6376358f1923#.selnbx3gp
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'react',
+      minChunks ({resource}) {
+        const targets = ['react', 'react-dom', 'react-redux', 'react-router', 'react-router-redux', 'react-helmet']
+
+        return resource &&
+          /\.js$/.test(resource) &&
+          resource.indexOf(rootNodeModulesPath) === 0 &&
+          targets.find(t => new RegExp(`${rootNodeModulesPath}/${t}/`, 'i').test(resource))
+      }
+    }),
+
     // extract manifest
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest'
@@ -215,18 +232,6 @@ module.exports = {
     //     async: 'common',
     //     minChunks (module, count) {
     //       return count >= 2
-    //     }
-    //   })
-    // ),
-
-    // create a specific chunk for these modules
-    // https://medium.com/@adamrackis/vendor-and-code-splitting-in-webpack-2-6376358f1923#.selnbx3gp
-    // ifProduction(
-    //   new webpack.optimize.CommonsChunkPlugin({
-    //     async: 'react-dnd',
-    //     minChunks({context}, count) {
-    //       const targets = ['react-dnd', 'react-dnd-html5-backend', 'react-dnd-touch-backend', 'dnd-core']
-    //       return context && context.indexOf('node_modules') >= 0 && targets.find(t => new RegExp('\\\\' + t + '\\\\', 'i').test(context))
     //     }
     //   })
     // ),

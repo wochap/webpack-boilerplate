@@ -1,13 +1,25 @@
-// @flow
-
 import '../styles/main.scss' // eslint-disable-line
 
-export function sum (a: number, b: number): number {
-  return a + b
+import React from 'react'
+import ReactDom from 'react-dom'
+import {AppContainer} from 'react-hot-loader'
+import Root from './components/Root'
+
+const rootEl = document.getElementById('root')
+
+function render (Component, domNode) {
+  return ReactDom.render(
+    <AppContainer>
+      <Component />
+    </AppContainer>,
+    domNode
+  )
 }
 
-// This tells Webpack that this file and all of its dependencies can be replaced.
-// http://andrewhfarmer.com/webpack-hmr-tutorial/#the-simple-way
+render(Root, rootEl)
+
 if (module.hot) {
-  module.hot.accept() // eslint-disable-line
+  module.hot.accept('../styles/main.scss')
+
+  module.hot.accept('./components/Root', () => render(Root, rootEl))
 }
