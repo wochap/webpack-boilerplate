@@ -4,7 +4,9 @@
       "plugins": [
         "transform-vue-jsx",
         "transform-es2015-modules-commonjs",
-        "dynamic-import-node"
+        "dynamic-import-node",
+        "syntax-flow",
+        "transform-flow-strip-types"
       ],
       "presets": [
         "stage-1"
@@ -12,7 +14,9 @@
     },
     "development": {
       "plugins": [
-        "transform-vue-jsx"
+        "transform-vue-jsx",
+        "syntax-flow",
+        "transform-flow-strip-types"
       ],
       "presets": [
         ["es2015", {"modules": false}],
@@ -22,7 +26,9 @@
     "production": {
       "plugins": [
         "transform-vue-jsx",
-        "transform-runtime"
+        "transform-runtime",
+        "syntax-flow",
+        "transform-flow-strip-types"
       ],
       "presets": [
         ["es2015", {"modules": false}],
