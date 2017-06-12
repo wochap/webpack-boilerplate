@@ -22,6 +22,7 @@ module.exports = {
   },
   rules: {
     'flowtype-errors/show-errors': 2,
+    'jsx-quotes': ["error", "prefer-double"],
     'no-console': isProduction ? 2 : 0,
     'no-debugger': isProduction ? 2 : 0
   }
