@@ -123,13 +123,14 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
-            scss: ifProduction(
-              ExtractTextPlugin.extract({
-                fallback: 'vue-style-loader',
-                use: ['css-loader', 'postcss-loader', 'sass-loader']
-              }),
-              ['vue-style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
-            )
+            css: ExtractTextPlugin.extract({
+              fallback: 'vue-style-loader',
+              use: generateStyleLoaders('css-loader', 'postcss-loader')
+            }),
+            scss: ExtractTextPlugin.extract({
+              fallback: 'vue-style-loader',
+              use: generateStyleLoaders('css-loader', 'postcss-loader', 'sass-loader')
+            })
           }
         }
       }, {
