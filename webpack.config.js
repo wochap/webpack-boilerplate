@@ -1,4 +1,6 @@
-require('dotenv').config()
+require('dotenv-extended').load({
+  errorOnMissing: true
+})
 
 const {resolve} = require('path')
 const webpack = require('webpack')

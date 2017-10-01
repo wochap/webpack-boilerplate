@@ -28,7 +28,7 @@
     "browser-sync-webpack-plugin": "^1.1.4",
     "cross-env": "^5.0.0",
     "css-loader": "^0.28.3",
-    "dotenv": "^4.0.0",
+    "dotenv-extended": "^2.0.1",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-friendly-formatter": "^3.0.0",
