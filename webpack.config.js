@@ -1,4 +1,6 @@
-require('dotenv').config()
+require('dotenv-extended').load({
+  errorOnMissing: true
+})
 
 const {resolve} = require('path')
 const webpack = require('webpack')
@@ -17,9 +19,20 @@ const externalPath = `http://${CURRENT_IP}:${process.env.WEBPACK_SERVER_PORT}/`
 const {ifProduction, ifNotProduction, ifDevelopment} = getIfUtils(process.env.NODE_ENV)
 const rootNodeModulesPath = resolve(__dirname, 'node_modules')
 
+const generateStyleLoaders = (...loaders) => (
+  loaders.map(loader => (
+    {
+      loader,
+      options: {
+        sourceMap: !!process.env.SOURCE_MAP
+      }
+    }
+  ))
+)
+
 module.exports = {
   context: resolve(__dirname, 'src'),
-  devtool: ifProduction(!!process.env.SOURCE_MAP && 'source-map', 'eval'),
+  devtool: ifProduction(!!process.env.SOURCE_MAP && 'source-map', 'cheap-module-eval-source-map'),
   stats: {
     colors: true,
     children: false,
@@ -95,14 +108,15 @@ module.exports = {
         loader: 'eslint-loader',
         exclude: /node_modules/,
         options: {
-          formatter: require('eslint-friendly-formatter')
+          formatter: require('eslint-friendly-formatter'),
+          cache: ifDevelopment()
         }
       }, {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          cacheDirectory: true
+          cacheDirectory: ifDevelopment()
         }
       }, {
         test: /\.vue$/,
@@ -120,22 +134,16 @@ module.exports = {
         }
       }, {
         test: /\.css$/,
-        use: ifProduction(
-          ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: ['css-loader', 'postcss-loader']
-          }),
-          ['style-loader', 'css-loader', 'postcss-loader']
-        )
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: generateStyleLoaders('css-loader', 'postcss-loader')
+        })
       }, {
         test: /\.scss$/,
-        use: ifProduction(
-          ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: ['css-loader', 'postcss-loader', 'sass-loader']
-          }),
-          ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
-        )
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: generateStyleLoaders('css-loader', 'postcss-loader', 'sass-loader')
+        })
       }, {
         test: /\.(png|jpe?g|gif)(\?.*)?$/,
         loader: 'file-loader',
@@ -204,7 +212,6 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       // css loader config
       minimize: ifProduction(),
-      sourceMap: ifProduction(!!process.env.SOURCE_MAP),
 
       debug: ifNotProduction()
     }),
@@ -213,7 +220,6 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks ({resource}, count) {
-        // TODO: ignore webpack modules (e.g.: buffer, style-loader, etc)
         return resource &&
           /\.js$/.test(resource) &&
           resource.indexOf(rootNodeModulesPath) === 0
@@ -284,7 +290,10 @@ module.exports = {
 
     process.env.BUNDLE_ANALYZER_REPORT && ifProduction(new BundleAnalyzerPlugin()),
 
-    ifProduction(new ExtractTextPlugin('static/css/[name].[contenthash:8].css')),
+    new ExtractTextPlugin({
+      filename: ifProduction('static/css/bundle.[name].[contenthash:8].css', 'bundle.[name].css'),
+      disable: ifNotProduction()
+    }),
 
     // remove duplicate css
     ifProduction(

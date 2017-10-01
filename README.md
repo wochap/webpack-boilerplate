@@ -4,7 +4,7 @@ A highly scalable and simple webpack boilerplate for **client** apps.
 
 ## Quick start
 
-Rename `.env.example` to `.env`. Then:
+Create a `.env` file. Then:
 
 ```sh
 # install dependencies
@@ -53,13 +53,13 @@ $ yarn test:coverage
 .
 ├── .babelrc                  # babel config
 ├── .editorconfig             # editor config
-├── .env.example              # env variables example
+├── .env.defaults             # env default variables
+├── .env.schema               # env variables schema (for validation)
 ├── .eslintignore             # eslint ignore config
 ├── .eslintrc                 # eslint config
 ├── .flowconfig               # flow config
 ├── .gitignore                # git ignore config
 ├── .nvmrc                    # nvm config
-├── .tern-project             # atom-ternjs project config
 ├── package.json              # https://docs.npmjs.com/files/package.json
 ├── postcss.config.js         # postcss config
 ├── README.md                 # this file
@@ -88,8 +88,4 @@ Rebuild node-sass
 $ npm rebuild node-sass
 ```
 
-## TODO
-
-- [ ] Refresh on each html-webpack-plugin template change.
-- [ ] Ignore webpack modules (e.g.: buffer, style-loader, etc) in production build.
-- [ ] Remove extra logs on production build.
+## [TODO](https://github.com/wochap/webpack-boilerplate/projects/1)
