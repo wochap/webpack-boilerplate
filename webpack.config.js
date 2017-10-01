@@ -95,14 +95,15 @@ module.exports = {
         loader: 'eslint-loader',
         exclude: /node_modules/,
         options: {
-          formatter: require('eslint-friendly-formatter')
+          formatter: require('eslint-friendly-formatter'),
+          cache: ifDevelopment()
         }
       }, {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          cacheDirectory: true
+          cacheDirectory: ifDevelopment()
         }
       }, {
         test: /\.css$/,
