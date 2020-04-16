@@ -2,6 +2,8 @@
 
 A highly scalable and simple webpack boilerplate for **client** apps.
 
+> Older versions of this boilerplate with [webpack v1](https://github.com/wochap/webpack-boilerplate/tree/webpack-1), [webpack v2](https://github.com/wochap/webpack-boilerplate/tree/webpack-2), [webpack v3](https://github.com/wochap/webpack-boilerplate/tree/webpack-3)
+
 ## Quick start
 
 Create a `.env` file. Then:
