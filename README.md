@@ -38,14 +38,14 @@ $ yarn test:coverage
 
 ### Features
 
-* HMR
-* CSS < PostCSS < SCSS
-* JS < ES2015 < ESLint + Flow
-* Browser Sync
-* Images and fonts well configured.
-* Long term caching.
-* Tree shaking.
-* Tests with Jest.
+- HMR
+- CSS < PostCSS < SCSS
+- JS < ES2015 < ESLint + Flow
+- Browser Sync
+- Images and fonts well configured.
+- Long term caching.
+- Tree shaking.
+- Tests with Jest.
 
 ### Boilerplate structure
 
@@ -80,7 +80,7 @@ $ yarn test:coverage
 
 ### Troubleshooting
 
-* `Module build failed: Error: ENOENT: no such file or directory, scandir`
+- `Module build failed: Error: ENOENT: no such file or directory, scandir`
 
 Rebuild node-sass
 

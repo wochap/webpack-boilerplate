@@ -7,7 +7,7 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings',
     'standard',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
   ],
   settings: {
     'import/resolver': {
@@ -28,6 +28,7 @@ module.exports = {
     'no-console': isProduction ? 2 : 0,
     'no-debugger': isProduction ? 2 : 0,
 
+    'import/no-duplicates': [0],
     'import/no-unresolved': [0],
-  }
+  },
 }
