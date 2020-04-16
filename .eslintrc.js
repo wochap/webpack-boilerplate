@@ -3,25 +3,32 @@ const isProduction = process.env.NODE_ENV === 'production'
 module.exports = {
   root: true,
   parser: 'babel-eslint',
-  plugins: [
-    'flowtype-errors'
-  ],
   extends: [
     'plugin:import/errors',
     'plugin:import/warnings',
-    'standard'
+    'standard',
+    'plugin:prettier/recommended',
   ],
   settings: {
-    'import/resolver': 'eslint-import-resolver-webpack'
+    'import/resolver': {
+      webpack: 'webpack.config.js',
+    },
   },
   env: {
-    browser: true,
+    amd: true,
     node: true,
-    jest: true
+    es6: true,
+    jest: true,
+    browser: true,
+    mocha: true,
   },
   rules: {
-    'flowtype-errors/show-errors': 2,
+    'prettier/prettier': 'error',
+
     'no-console': isProduction ? 2 : 0,
-    'no-debugger': isProduction ? 2 : 0
-  }
+    'no-debugger': isProduction ? 2 : 0,
+
+    'import/no-duplicates': [0],
+    'import/no-unresolved': [0],
+  },
 }
