@@ -1,8 +1,6 @@
-// @flow
+import '<styles>/main.scss'
 
-import '../styles/main.scss' // eslint-disable-line
-
-export function sum (a: number, b: number): number {
+export function sum (a, b) {
   return a + b
 }
 
