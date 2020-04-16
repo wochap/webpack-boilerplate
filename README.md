@@ -40,7 +40,7 @@ $ yarn test:coverage
 
 - HMR
 - CSS < PostCSS < SCSS
-- JS < ES2015 < ESLint + Flow
+- JS < ES2015 < ESLint < Prettier
 - Browser Sync
 - Images and fonts well configured.
 - Long term caching.
@@ -51,15 +51,15 @@ $ yarn test:coverage
 
 ```
 .
-├── .babelrc                  # babel config
 ├── .editorconfig             # editor config
 ├── .env.defaults             # env default variables
 ├── .env.schema               # env variables schema (for validation)
 ├── .eslintignore             # eslint ignore config
 ├── .eslintrc                 # eslint config
-├── .flowconfig               # flow config
 ├── .gitignore                # git ignore config
 ├── .nvmrc                    # nvm config
+├── .prettierrc               # prettier config
+├── babel.config.js           # babel config
 ├── package.json              # https://docs.npmjs.com/files/package.json
 ├── postcss.config.js         # postcss config
 ├── README.md                 # this file
