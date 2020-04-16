@@ -6,7 +6,8 @@ module.exports = {
   extends: [
     'plugin:import/errors',
     'plugin:import/warnings',
-    'standard'
+    'standard',
+    'plugin:prettier/recommended'
   ],
   settings: {
     'import/resolver': {
@@ -22,6 +23,8 @@ module.exports = {
     mocha: true,
   },
   rules: {
+    'prettier/prettier': 'error',
+
     'no-console': isProduction ? 2 : 0,
     'no-debugger': isProduction ? 2 : 0,
 
