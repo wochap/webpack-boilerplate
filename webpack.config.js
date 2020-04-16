@@ -12,7 +12,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
-const {getIfUtils, removeEmpty} = require('webpack-config-utils')
+const {getIfUtils} = require('webpack-config-utils')
 
 const CURRENT_IP = require('my-local-ip')()
 const externalPath = `http://${CURRENT_IP}:${process.env.WEBPACK_SERVER_PORT}/`
@@ -20,7 +20,6 @@ const {ifProduction, ifNotProduction, ifDevelopment} = getIfUtils(
   process.env.NODE_ENV,
 )
 const rootNodeModulesPath = resolve(__dirname, 'node_modules')
-
 const generateStyleLoaders = (...loaders) =>
   loaders.map(loader => ({
     loader,
@@ -28,6 +27,7 @@ const generateStyleLoaders = (...loaders) =>
       sourceMap: !!process.env.SOURCE_MAP,
     },
   }))
+const toBoolean = bool => ['true', true].includes(bool)
 
 module.exports = {
   context: resolve(__dirname, 'src'),
@@ -60,7 +60,7 @@ module.exports = {
     publicPath: ifProduction('/', externalPath),
   },
   entry: {
-    app: removeEmpty([
+    app: [
       // fix HMR in IE
       ifDevelopment('eventsource-polyfill'),
 
@@ -70,7 +70,7 @@ module.exports = {
       ifDevelopment(`webpack-dev-server/client?${externalPath}`),
 
       './app/main.js',
-    ]),
+    ].filter(Boolean),
   },
   resolve: {
     alias: {
@@ -254,14 +254,14 @@ module.exports = {
       },
     ],
   },
-  plugins: removeEmpty([
+  plugins: [
     // ensures npm install <library> forces a project rebuild
     ifDevelopment(new WatchMissingNodeModulesPlugin(rootNodeModulesPath)),
 
     // enable HMR globally
     ifDevelopment(new webpack.HotModuleReplacementPlugin()),
 
-    process.env.BUNDLE_ANALYZER_REPORT &&
+    toBoolean(process.env.BUNDLE_ANALYZER_REPORT) &&
       ifProduction(new BundleAnalyzerPlugin()),
 
     ifProduction(
@@ -291,7 +291,7 @@ module.exports = {
 
     ifProduction(new InlineManifestWebpackPlugin('webpackManifest')),
 
-    process.env.BROWSER_SYNC &&
+    toBoolean(process.env.BROWSER_SYNC) &&
       ifNotProduction(
         new BrowserSyncPlugin(
           {
@@ -308,5 +308,5 @@ module.exports = {
       ),
 
     new ProgressBarPlugin(),
-  ]),
+  ].filter(Boolean),
 }
