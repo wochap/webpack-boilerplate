@@ -69,7 +69,7 @@
     "prettier": "^2.0.4",
     "pretty-quick": "^2.0.1",
     "progress-bar-webpack-plugin": "^2.1.0",
-    "react-dev-utils": "^10.2.1",
+    "react-dev-utils": "^11.0.4",
     "sass-loader": "^8.0.2",
     "shx": "^0.3.2",
     "style-loader": "^1.1.4",
